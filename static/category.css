@@ -1,0 +1,347 @@
+@charset "UTF-8";
+.main_category {
+  display: flex;
+  margin-left: 15%;
+  margin-right: 15%;
+}
+.main_category .main_category-nav {
+  height: fit-content;
+  margin-top: 3vw;
+  margin-right: 1%;
+  max-width: 20vw;
+  min-width: 15vw;
+  background-color: #F2F8FD;
+  border-radius: 1vw;
+  padding: 1vw;
+}
+.main_category .main_category-nav .title {
+  color: #656565;
+  font-size: 1vw;
+  margin-bottom: 0.4vw;
+}
+.main_category .main_category-nav .nav-category__body .nav-category__body-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.main_category .main_category-nav .nav-category__body .nav-category__body-item .wrap {
+  display: flex;
+  align-items: center;
+}
+.main_category .main_category-nav .nav-category__body .nav-category__body-item .wrap .check {
+  margin-right: 0.5vw;
+}
+.main_category .main_category-nav .nav-category__body .nav-category__body-item .wrap .titlle {
+  color: #656565;
+  font-size: 1vw;
+}
+.main_category .main_category-nav .nav-category__body .nav-category__body-item .count {
+  color: #C6C6C6;
+  font-size: 0.9vw;
+}
+.main_category .main_category-nav .nav-price {
+  margin-top: 1vw;
+}
+.main_category .main_category-nav .nav-price .nav-price__body {
+  display: flex;
+  justify-content: space-between;
+}
+.main_category .main_category-nav .nav-price .nav-price__body .nav-price__body-input input {
+  border: none;
+  border-radius: 0.5vw;
+  box-shadow: 0px 3px 7px 0px rgba(165, 156, 159, 0.58);
+  font-size: 1vw;
+  padding: 0.5vw;
+  width: 7vw;
+}
+.main_category .main_category-nav .nav-price .nav-price__body .nav-price__body-input input::placeholder {
+  color: #E8E8E8;
+}
+.main_category .main_category-nav .nav-submit {
+  margin-bottom: 1vw;
+}
+.main_category .main_category-nav .nav-submit .btn-wrapper {
+  width: 100%;
+  color: white;
+  background: #86C1DF;
+  text-align: center;
+  padding-top: 0.5vw;
+  padding-bottom: 0.5vw;
+  font-weight: bold;
+  margin-top: 1vw;
+  border-radius: 0.5vw;
+  box-shadow: 0px 3px 7px 0px rgba(165, 156, 159, 0.58);
+}
+.main_category .main_category-nav .nav-search {
+  margin-bottom: 1vw;
+}
+.main_category .main_category-nav .nav-search .nav-search__title {
+  color: #656565;
+  font-size: 1vw;
+}
+.main_category .main_category-nav .nav-search .nav-search__input input {
+  border: none;
+  border-radius: 0.5vw;
+  box-shadow: 0px 3px 7px 0px rgba(165, 156, 159, 0.58);
+  font-size: 1vw;
+  padding: 0.5vw;
+  padding-right: 2.3vw;
+  width: 15vw;
+}
+.main_category .main_category-nav .nav-search .nav-search__input img {
+  position: relative;
+  margin-bottom: -0.2vw;
+  margin-left: -1.8vw;
+  width: 1.2vw;
+}
+
+.wrapper .catalog1 {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+.wrapper .catalog1 .catalog__wrapper {
+  flex-wrap: wrap;
+}
+.wrapper .catalog1 .catalog__wrapper .item {
+  min-width: 14vw;
+  max-width: 14vw;
+  margin-left: 0.5vw;
+  margin-right: 0.5vw;
+}
+
+@media only screen and (max-device-width: 480px) {
+  .main_category {
+    display: block;
+    margin-left: 5%;
+    margin-right: 5%;
+  }
+
+  .wrapper .catalog1 {
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+
+  .wrapper .catalog1 .catalog__title {
+    margin-top: 3vw;
+    font-size: 5vw;
+  }
+
+  .wrapper .catalog1 .catalog__body {
+    margin-left: 5%;
+    margin-right: 5%;
+  }
+
+  .wrapper .catalog1 .catalog__wrapper {
+    flex-wrap: wrap;
+    max-width: 100%;
+  }
+
+  .wrapper .catalog1 .catalog__wrapper .new:before {
+    content: "Новинка";
+    position: absolute;
+    margin-left: 25.5vw;
+    color: #86C1DF;
+    font-weight: bolder;
+    border: 0.1vw solid #86C1DF;
+    border-radius: 1vw;
+    padding: 0.3vw;
+    padding-left: 0.7vw;
+    padding-right: 0.7vw;
+    font-size: 2vw;
+  }
+
+  .wrapper .catalog1 .catalog__wrapper .hit:after {
+    content: "Хит";
+    position: absolute;
+    margin-top: -70vw;
+    margin-left: 27.5vw;
+    color: white;
+    font-weight: bolder;
+    border: 0.1vw solid #D7BACA;
+    background: #D7BACA;
+    border-radius: 1vw;
+    padding: 0.3vw;
+    padding-left: 1.6vw;
+    padding-right: 1.6vw;
+    font-size: 2vw;
+  }
+
+  .wrapper .catalog1 .catalog__wrapper .newhit:after {
+    content: "Хит";
+    position: absolute;
+    margin-top: -65vw;
+    margin-left: 25.5vw;
+    color: white;
+    font-weight: bolder;
+    border: 0.1vw solid #D7BACA;
+    background: #D7BACA;
+    border-radius: 1vw;
+    padding: 0.3vw;
+    padding-left: 1.6vw;
+    padding-right: 1.6vw;
+    font-size: 2vw;
+  }
+
+  .wrapper .catalog1 .catalog__wrapper .newhit:before {
+    content: "Новинка";
+    position: absolute;
+    margin-left: 25.5vw;
+    color: #86C1DF;
+    font-weight: bolder;
+    border: 0.1vw solid #86C1DF;
+    border-radius: 1vw;
+    padding: 0.3vw;
+    padding-left: 0.7vw;
+    padding-right: 0.7vw;
+    font-size: 2vw;
+  }
+
+  .wrapper .catalog1 .catalog__wrapper .item {
+    max-width: 40%;
+    box-shadow: 0px 0px 8px -3px rgba(0, 0, 0, 0.2);
+    margin-bottom: 5vw;
+    padding: 3vw;
+    border-radius: 2vw;
+  }
+
+  .wrapper .catalog1 .catalog__wrapper .item .item__img {
+    height: 45vw;
+  }
+
+  .wrapper .catalog1 .catalog__wrapper .item .item__description {
+    font-size: 3vw;
+    height: 12vw;
+  }
+
+  .wrapper .catalog1 .catalog__wrapper .item .item__price {
+    font-size: 4vw;
+  }
+
+  .wrapper .catalog1 .catalog__wrapper .item .item__btns .btn__wrapper {
+    font-size: 3vw;
+    padding-top: 1vw;
+    padding-bottom: 1vw;
+    padding-left: 3vw;
+    padding-right: 3vw;
+    border-radius: 3vw;
+  }
+
+  .wrapper .catalog1 .catalog__wrapper .item .item__btns .counter {
+    font-size: 4vw;
+  }
+
+  .wrapper .catalog .catalog__title {
+    margin-top: 3vw;
+    font-size: 5vw;
+  }
+
+  .wrapper .catalog .catalog__body {
+    margin-left: 5%;
+    margin-right: 5%;
+  }
+
+  .wrapper .catalog .catalog__wrapper .items {
+    margin-right: 5%;
+    min-width: 46%;
+  }
+
+  .wrapper .catalog .catalog__wrapper .items .new:before {
+    content: "Новинка";
+    position: absolute;
+    margin-left: 25.5vw;
+    color: #86C1DF;
+    font-weight: bolder;
+    border: 0.1vw solid #86C1DF;
+    border-radius: 1vw;
+    padding: 0.3vw;
+    padding-left: 0.7vw;
+    padding-right: 0.7vw;
+    font-size: 2vw;
+  }
+
+  .wrapper .catalog .catalog__wrapper .items .hit:after {
+    content: "Хит";
+    position: absolute;
+    margin-top: -70vw;
+    margin-left: 27.5vw;
+    color: white;
+    font-weight: bolder;
+    border: 0.1vw solid #D7BACA;
+    background: #D7BACA;
+    border-radius: 1vw;
+    padding: 0.3vw;
+    padding-left: 1.6vw;
+    padding-right: 1.6vw;
+    font-size: 2vw;
+  }
+
+  .wrapper .catalog .catalog__wrapper .items .newhit:after {
+    content: "Хит";
+    position: absolute;
+    margin-top: -65vw;
+    margin-left: 25.5vw;
+    color: white;
+    font-weight: bolder;
+    border: 0.1vw solid #D7BACA;
+    background: #D7BACA;
+    border-radius: 1vw;
+    padding: 0.3vw;
+    padding-left: 1.6vw;
+    padding-right: 1.6vw;
+    font-size: 2vw;
+  }
+
+  .wrapper .catalog .catalog__wrapper .items .newhit:before {
+    content: "Новинка";
+    position: absolute;
+    margin-left: 25.5vw;
+    color: #86C1DF;
+    font-weight: bolder;
+    border: 0.1vw solid #86C1DF;
+    border-radius: 1vw;
+    padding: 0.3vw;
+    padding-left: 0.7vw;
+    padding-right: 0.7vw;
+    font-size: 2vw;
+  }
+
+  .wrapper .catalog .catalog__wrapper .items .item {
+    box-shadow: 0px 0px 8px -3px rgba(0, 0, 0, 0.2);
+    margin-bottom: 5vw;
+    padding: 3vw;
+    border-radius: 2vw;
+  }
+
+  .wrapper .catalog .catalog__wrapper .items .item .item__img {
+    height: 45vw;
+  }
+
+  .wrapper .catalog .catalog__wrapper .items .item .item__description {
+    font-size: 3vw;
+    height: 12vw;
+  }
+
+  .wrapper .catalog .catalog__wrapper .items .item .item__price {
+    font-size: 4vw;
+  }
+
+  .wrapper .catalog .catalog__wrapper .items .item .item__btns .btn__wrapper {
+    font-size: 3vw;
+    padding-top: 1vw;
+    padding-bottom: 1vw;
+    padding-left: 3vw;
+    padding-right: 3vw;
+    border-radius: 3vw;
+  }
+
+  .wrapper .catalog .catalog__wrapper .items .item .item__btns .counter {
+    font-size: 4vw;
+  }
+
+  .wrapper .catalog1 .catalog__title {
+    margin-top: 3vw;
+    font-size: 5vw;
+  }
+}
+
+/*# sourceMappingURL=category.css.map */

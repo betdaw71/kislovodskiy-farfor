@@ -1,0 +1,190 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load humanize %}
+
+{% block static_block %}
+<link rel="stylesheet" href="{% static 'category.css'%}">
+        
+{% endblock %}
+
+{% block content %}
+
+
+    <div class="main_category">
+        <div class="main_category-nav">
+           <form action="" method="get" id='formacs'>
+            <div class="nav-search">
+                <div class="nav-search__title title">Поиск по названию</div>
+                <div class="nav-search__input"><input type="text" name='search' placeholder="Поиск" id = 'search_in'><img src="{% static 'img/search.png' %}" name='search' alt=""></div>
+            </div>
+            <div class="nav-category">
+                <div class="nav-category__title title">Категории</div>
+                <div class="nav-category__body">
+                    <div class="nav-category__body-item">
+                          <div class="wrap">
+                           <div class="check"><input type="radio" checked="checked"  name="category" value="all"> </div>
+                           <div class="titlle">Все </div>
+                           </div>
+                           <div class="count">99+</div>
+                        </div>
+                    {% for i in categories %}
+                        <div class="nav-category__body-item">
+                          <div class="wrap">
+                           <div class="check"><input type="radio" name="category" value="{{i.slug }}"> </div>
+                           <div class="titlle">{{ i.name }} </div>
+                           </div>
+                           <div class="count">{{ i.products.all|length }}</div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="nav-price">
+                <div class="nav-price__title title">Цена</div>
+                <div class="nav-price__body">
+                    <div class="nav-price__body-input"><input name="pricefrom" type="text" value="0" placeholder="от" id='from'></div>
+                    <div class="nav-price__body-input"><input name="priceto" value="99999" type="text"
+                    placeholder="до" id='to'></div>
+                </div>
+            </div>
+            <div class="nav-submit">
+                <div class="btn-wrapper" id='filter-submit'>
+                    Применить
+                </div>
+            </div>
+            </form>
+        </div>
+        <div class="main_category-body">
+            <div class="catalog1">                
+                <div class="catalog__wrapper">
+                   {% for i in products %}
+                    {% if i.new == True and i.hit == False %}
+                    <div class="item new">
+                       <a href="{% url 'shop:product_detail' i.pk i.slug  %}">
+                        <div class="item__img"><img src="{{ i.images.first.image.url }}" alt=""></div>
+                        <div class="item__description">{{ i.name }}</div>
+                        <div class="item__price">{{ i.price|intcomma }} ₽</div>
+                        </a>
+                        <div class="item__btns">
+                            <div class="btn__wrapper" onclick="document.getElementById('addForm{{i.pk}}').submit()">В корзину</div>
+                            <div class="counter">
+                                <div class="minus" id="{{i.pk}}">-</div>
+                                <div class="numb{{i.pk}}"id="">1</div>
+                                <div class="plus" id="{{i.pk}}">+</div>
+                            </div>
+                            <form action="{% url 'cart:cart_add' %}" method="Get" id='addForm{{i.pk}}'>
+                                <input type="hidden" value="{{ i.pk }}" name="product_id">
+                                <input type="hidden" value="1" id="quantity{{i.pk}}" name="quantity">
+                            </form>
+                        </div>
+                    </div>
+                    {% elif i.hit == True and i.new == False %}
+                    <div class="item hit">
+                       <a href="{% url 'shop:product_detail' i.pk i.slug  %}">
+                        <div class="item__img"><img src="{{ i.images.first.image.url }}" alt=""></div>
+                        <div class="item__description">{{ i.name }}</div>
+                        <div class="item__price">{{ i.price|intcomma }} ₽</div>
+                        </a>
+                        <div class="item__btns">
+                            <div class="btn__wrapper" onclick="document.getElementById('addForm{{i.pk}}').submit()">В корзину</div>
+                            <div class="counter">
+                                <div class="minus" id="{{i.pk}}">-</div>
+                                <div class="numb{{i.pk}}"id="">1</div>
+                                <div class="plus" id="{{i.pk}}">+</div>
+                            </div>
+                            <form action="{% url 'cart:cart_add' %}" method="Get" id='addForm{{i.pk}}'>
+                                <input type="hidden" value="{{ i.pk }}" name="product_id">
+                                <input type="hidden" value="1" id="quantity{{i.pk}}" name="quantity">
+                            </form>
+                        </div>
+                    </div>
+                    {% elif i.hit == True and i.new == True %}
+                    <div class="item newhit">
+                       <a href="{% url 'shop:product_detail' i.pk i.slug  %}">
+                        <div class="item__img"><img src="{{ i.images.first.image.url }}" alt=""></div>
+                        <div class="item__description">{{ i.name }}</div>
+                        <div class="item__price">{{ i.price|intcomma }} ₽</div>
+                        </a>
+                        <div class="item__btns">
+                            <div class="btn__wrapper" onclick="document.getElementById('addForm{{i.pk}}').submit()">В корзину</div>
+                            <div class="counter">
+                                <div class="minus" id="{{i.pk}}">-</div>
+                                <div class="numb{{i.pk}}"id="">1</div>
+                                <div class="plus" id="{{i.pk}}">+</div>
+                            </div>
+                            <form action="{% url 'cart:cart_add' %}" method="Get" id='addForm{{i.pk}}'>
+                                <input type="hidden" value="{{ i.pk }}" name="product_id">
+                                <input type="hidden" value="1" id="quantity{{i.pk}}" name="quantity">
+                            </form>
+                        </div>
+                    </div>
+                    {% else %}
+                    <div class="item ">
+                       <a href="{% url 'shop:product_detail' i.pk i.slug  %}">
+                        <div class="item__img"><img src="{{ i.images.first.image.url }}" alt=""></div>
+                        <div class="item__description">{{ i.name }}</div>
+                        <div class="item__price">{{ i.price|intcomma }} ₽</div>
+                        </a>
+                        <div class="item__btns">
+                            <div class="btn__wrapper" onclick="document.getElementById('addForm{{i.pk}}').submit()">В корзину</div>
+                            <div class="counter">
+                                <div class="minus" id="{{i.pk}}">-</div>
+                                <div class="numb{{i.pk}}"id="">1</div>
+                                <div class="plus" id="{{i.pk}}">+</div>
+                            </div>
+                            <form action="{% url 'cart:cart_add' %}" method="Get" id='addForm{{i.pk}}'>
+                                <input type="hidden" value="{{ i.pk }}" name="product_id">
+                                <input type="hidden" value="1" id="quantity{{i.pk}}" name="quantity">
+                            </form>
+                        </div>
+                    </div>
+                    {% endif %}
+
+                    {% endfor %}
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    {% csrf_token %}
+
+    <script>
+        var csrftoken = $("[name=csrfmiddlewaretoken]").val();
+$('#filter-submit').on('click',function(){
+    $('#formacs').submit();
+//    let category = $('input[name="categoryyy"]:checked').val();
+//    let serch = $('#search_in').val();
+//    let pricefrom = $('#pricefrom').val();
+//    let priceto = $('#priceto').val()
+//    $('#formacs').attr('action'," url 'category_filter '"+ serch +" "+ category +" "+ pricefrom +" "+ priceto +" %}");
+//    console.log('asdasdas');
+//    var categories = []
+//    $('input:checkbox:checked').each(function(){
+//	   categories.push($(this).attr('name'));
+//    });
+//    data={
+//        'category' : categories,
+//        'price_from' : $('#from').val(),
+//        'price_to' : $('#to').val(),
+//        'search': $('#search_in').val()
+//    }
+//    $.ajax({
+//    url: " url 'category_filter' %}",
+//    method : "get",
+//    dataType : "json",
+//        headers:{
+//        "X-CSRFToken": csrftoken
+//    },
+//    data : data,
+//    timeout: 1000,
+//    success: function (response) {
+//        // Do some success scripts
+//        if (response.operation_status == 'ok') {
+//            alert ('All done ok')
+//        } else {
+//            alert ('Ups. Found some error!')
+//        }
+//    }
+//});
+});
+</script>
+{% endblock %}

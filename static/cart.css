@@ -1,0 +1,46 @@
+
+.container {
+  margin-left: 15%;
+  margin-right: 15%;
+}
+
+table {
+  width: 100%;
+}
+table thead {
+  width: 100%;
+}
+table thead th {
+  text-align: left;
+  font-size: 1.2vw;
+  margin-right: 1vw;
+}
+table tbody tr th {
+  text-align: left;
+}
+table tbody tr th img {
+  max-width: 15vw;
+  height: auto;
+}
+table tbody tr td {
+  font-size: 1vw;
+}
+
+.text-right {
+  margin-top: 3vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.text-right a {
+  font-size: 1.5vw;
+  background-color: #86C1DF;
+  color: white;
+  padding-left: 1vw;
+  padding-right: 1vw;
+  padding-top: 0.5vw;
+  padding-bottom: 0.5vw;
+  border-radius: 1.5vw;
+}
+
+/*# sourceMappingURL=cart.css.map */

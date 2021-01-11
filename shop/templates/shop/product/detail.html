@@ -1,0 +1,202 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load humanize %}
+{% block static_block %}
+    <link rel="stylesheet" href="{% static 'item.css' %}">
+{% endblock %}
+
+{% block content %}
+ <div class="main-item" >
+        <div class="main-item__img">
+            <div id="sync1" class="owl-carousel owl-theme">
+               {% for i in product.images.all %}
+                <div class="item">
+                    <img src="{{ i.image.url }}" alt="">
+                </div>
+                {% endfor %}
+
+
+            </div>
+
+            <div id="sync2" class="owl-carousel owl-theme">
+                {% for i in product.images.all %}
+                <div class="item">
+                    <img src="{{ i.image.url }}" alt="">
+                </div>
+                {% endfor %}
+
+            </div>
+            
+        </div>
+        <div class="main-item__description">
+            <div class="main-item__description-title">
+                {{ product.name }}
+            </div>
+            <div class="main-item__description-dop">
+                <div class="main-item__description-dop__item">
+                    <span>Добавлено:</span><div class="art"> {{ product.created_at }}</div>
+                </div>
+                <div class="main-item__description-dop__item">
+                    <span>Категория:</span> <a href="{% url 'shop:product_list' %}?search=&category={{ product.category.slug }}&pricefrom=0&priceto=99999">{{ product.category.name }}</a>
+                </div>
+
+            </div>
+            <div class="main-item__description-price">
+                
+                <div class="main-item__description-price__price"style="display: flex;margin-right: 2vw;">
+                    <div id="calculation" >{{ product.price|intcomma }}</div><div class="" style="margin-left: 0.5vw;"> ₽</div>
+                </div>
+                
+                <div class="main-item__description-price__conter">
+                    
+                    <div class="plus"id='buttonCountPlus' style="cursor: pointer;">+</div>
+                    <div class="count" id="buttonCountNumber">1</div>
+                    <div class="minus"id="buttonCountMinus"style="cursor: pointer;">-</div>
+                    <form action="{% url 'cart:cart_add' %}" method="Get" id='addForm'>
+                    <input type="hidden" value="1" id="quantity" name="quantity">
+                    <input type="hidden" value="{{ product.pk }}" name="product_id">
+                    </form>
+                </div>
+                
+            </div>
+            <div class="main-item__description-btn" onclick="document.getElementById('addForm').submit();">
+                <div class="btn__wrapper">
+                    В карзину
+                </div>
+            </div>
+            <div class="main-item__description-description">
+                <div class="main-item__description-description__title">
+                    Описание
+                </div>
+                <div class="main-item__description-descripton__desc">
+                    <div class="height"><span>Высота: </span>{{ product.height }}</div>
+                    <div class="coverage"><span>Покрытие: </span>{{ product.coverage }}</div>
+                     <div class="matherial"><span>Материал: </span>{{ product.matherial }}</div>
+                    {{ product.description }}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="catalog1">
+                <div class="catalog__title">Похожие товары</div>
+                
+                <div class="catalog__wrapper">
+                   
+                    <div class="item">
+                        <div class="item__img"><img src="{% static 'img/catalog/example1.png'%}" alt=""></div>
+                        <div class="item__description">Тарель живопись ,Рафаэль Санти "Мадонна в кресле"</div>
+                        <div class="item__price">2 190 ₽</div>
+                        <div class="item__btns">
+                            <div class="btn__wrapper">В корзину</div>
+                            <div class="counter">
+                                <div class="minus">-</div>
+                                <div class="numb">1</div>
+                                <div class="plus">+</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="item__img"><img src="{% static 'img/catalog/example1.png'%}" alt=""></div>
+                        <div class="item__description">Тарель живопись ,Рафаэль Санти "Мадонна в кресле"</div>
+                        <div class="item__price">2 190 ₽</div>
+                        <div class="item__btns">
+                            <div class="btn__wrapper">В корзину</div>
+                            <div class="counter">
+                                <div class="minus">-</div>
+                                <div class="numb">1</div>
+                                <div class="plus">+</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item hit">
+                        <div class="item__img"><img src="{% static 'img/catalog/example2.png'%}" alt=""></div>
+                        <div class="item__description">Тарель живопись ,Рафаэль Санти "Мадонна в кресле"</div>
+                        <div class="item__price">2 190 ₽</div>
+                        <div class="item__btns">
+                            <div class="btn__wrapper">В корзину</div>
+                            <div class="counter">
+                                <div class="minus">-</div>
+                                <div class="numb">1</div>
+                                <div class="plus">+</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="item__img"><img src="{% static 'img/catalog/example3.png'%}" alt=""></div>
+                        <div class="item__description">Тарель живопись ,Рафаэль Санти "Мадонна в кресле"</div>
+                        <div class="item__price">2 190 ₽</div>
+                        <div class="item__btns">
+                            <div class="btn__wrapper">В корзину</div>
+                            <div class="counter">
+                                <div class="minus">-</div>
+                                <div class="numb">1</div>
+                                <div class="plus">+</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="catalog1">
+                <div class="catalog__title">Возможно вас также заинтересует</div>
+                
+                <div class="catalog__wrapper">
+                   
+                    <div class="item">
+                        <div class="item__img"><img src="{% static 'img/catalog/example1.png'%}" alt=""></div>
+                        <div class="item__description">Тарель живопись ,Рафаэль Санти "Мадонна в кресле"</div>
+                        <div class="item__price">2 190 ₽</div>
+                        <div class="item__btns">
+                            <div class="btn__wrapper">В корзину</div>
+                            <div class="counter">
+                                <div class="minus">-</div>
+                                <div class="numb">1</div>
+                                <div class="plus">+</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="item__img"><img src="{% static 'img/catalog/example1.png'%}" alt=""></div>
+                        <div class="item__description">Тарель живопись ,Рафаэль Санти "Мадонна в кресле"</div>
+                        <div class="item__price">2 190 ₽</div>
+                        <div class="item__btns">
+                            <div class="btn__wrapper">В корзину</div>
+                            <div class="counter">
+                                <div class="minus">-</div>
+                                <div class="numb">1</div>
+                                <div class="plus">+</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item hit">
+                        <div class="item__img"><img src="{% static 'img/catalog/example2.png'%}" alt=""></div>
+                        <div class="item__description">Тарель живопись ,Рафаэль Санти "Мадонна в кресле"</div>
+                        <div class="item__price">2 190 ₽</div>
+                        <div class="item__btns">
+                            <div class="btn__wrapper">В корзину</div>
+                            <div class="counter">
+                                <div class="minus">-</div>
+                                <div class="numb">1</div>
+                                <div class="plus">+</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="item__img"><img src="{% static 'img/catalog/example3.png'%}" alt=""></div>
+                        <div class="item__description">Тарель живопись ,Рафаэль Санти "Мадонна в кресле"</div>
+                        <div class="item__price">2 190 ₽</div>
+                        <div class="item__btns">
+                            <div class="btn__wrapper">В корзину</div>
+                            <div class="counter">
+                                <div class="minus">-</div>
+                                <div class="numb">1</div>
+                                <div class="plus">+</div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+<script src="{% static 'detail.js' %}"></script>
+
+{% endblock %}
