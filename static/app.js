@@ -2,18 +2,18 @@ $(window).on("scroll", function () {
     var scrolled = $(this).scrollTop();
     if( scrolled > 137 ) {
         $('.main').addClass('scrolled');
-    }   
-    if( scrolled <= 107 ) {     
+    }
+    if( scrolled <= 107 ) {
         $('.main').removeClass('scrolled');
     }
 });
 var headCatalog = false;
 
-$(document).mouseup(function (e){ 
-		var div = $(".wrap-head"); 
-		if (!div.is(e.target) 
-		    && div.has(e.target).length === 0) { 
-			div.fadeOut(200); 
+$(document).mouseup(function (e){
+		var div = $(".wrap-head");
+		if (!div.is(e.target)
+		    && div.has(e.target).length === 0) {
+			div.fadeOut(200);
 //            headCatalog = false;
 		}
 	});
@@ -24,7 +24,7 @@ $('.header-category').on('click',function(){
         $('.wrap-head').fadeIn(200);
         headCatalog = true
     }else{
-        
+
     }
 });
 $('.info__backcall-wrapper').on('click',function(){
@@ -38,7 +38,7 @@ $('.minus').on('click',function(){
     var id = this.id;
     // parseInt($('.numb'+id).html());
     if (parseInt($('.numb'+id).html())>1) {
-        
+
         $('.numb'+id).html(parseInt($('.numb'+id).html())-1);
         $('#quantity'+id).val(parseInt($('#quantity'+id).val())-1);
     }
@@ -64,7 +64,7 @@ $(document).ready(function() {
         items: 1,
         slideSpeed: 2000,
         nav: true,
-        autoplay: true, 
+        autoplay: true,
         dots: false,
         infinity:false,
         loop: true,
@@ -163,7 +163,7 @@ $(document).ready(function() {
 
     //mehtods:
     Owl2row.prototype.build2row = function(thisScope){
-    
+
         var carousel = $(thisScope.owl.$element);
         var carouselItems = carousel.find('.' + thisScope.owl.options.owl2rowTarget);
 
@@ -287,7 +287,7 @@ $(function() {
     1200: {
       items: 4
     },
-    
+
     320: {
       items: 2,
       margin: 3,
@@ -302,4 +302,12 @@ $(function() {
   $(".arrow-left").click(function(){
         owl.trigger("prev.owl.carousel");
     });
+});
+
+
+
+$("body").on('click', '[href*="#"]', function(e){
+  var fixed_offset = 100;
+  $('html,body').stop().animate({ scrollTop: $(this.hash).offset().top - fixed_offset }, 1000);
+  e.preventDefault();
 });

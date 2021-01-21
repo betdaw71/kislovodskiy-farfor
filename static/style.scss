@@ -39,7 +39,7 @@ a:-webkit-any-link{
 .item a{
     text-decoration: none;
     color:black;
-    
+
 }
 
 .scrolled .header {
@@ -106,8 +106,9 @@ a:-webkit-any-link{
 }
 .backcall-form{
   display: none;
+  z-index: 1;
   position: absolute;
-  margin-top: 20vw;
+  top: 6vw;
   .backcall-form__wrapper{
     text-align: center;
     background-color: white;
@@ -116,7 +117,7 @@ a:-webkit-any-link{
     padding:1vw;
     .wrapper__undertitle{
       color: #C6C6C6;
-      font-size: 0.7vw; 
+      font-size: 0.7vw;
     }
     .wrapper__form{
       margin-top: 1vw;
@@ -190,7 +191,7 @@ a:-webkit-any-link{
     height: 11vw;
     column-width: 12vw;
     column-gap: 0;
-    column-fill: auto;  
+    column-fill: auto;
   div {
     width: 13vw;
     height: 1.5vw;
@@ -203,7 +204,7 @@ a:-webkit-any-link{
     height: 11vw;
     column-width: 12vw;
     column-gap: 0;
-    column-fill: auto;  
+    column-fill: auto;
   div {
     width: 13vw;
     height: 1.5vw;
@@ -386,6 +387,7 @@ a:-webkit-any-link{
   display: flex;
   justify-content: space-between;
   position: relative;
+  max-height: 23vw;
 }
 
 .wrapper .category .category__wrapper .category__wrapper-full {
@@ -397,6 +399,7 @@ a:-webkit-any-link{
   overflow: hidden;
   position: relative;
   height: 100%;
+  max-height: 20vw;
   background-color: white;
   box-shadow: 0px 0px 11px 3px rgba(101, 101, 101, 0.2);
   padding: 1vw;
@@ -551,6 +554,7 @@ a:-webkit-any-link{
   height: 100%;
   display: flex;
   justify-content: space-between;
+  max-height: 20vw;
 }
 
 .wrapper .category .category__wrapper .category__wrapper-gor .category-item-gor {
@@ -562,6 +566,7 @@ a:-webkit-any-link{
   border-radius: 0.8vw;
   width: 42%;
   height: 100%;
+  max-height: 20vw;
 }
 
 .wrapper .category .category__wrapper .category__wrapper-gor .category-item-gor:before {
@@ -899,8 +904,8 @@ a:-webkit-any-link{
 
 .wrapper .catalog1 {
   margin-top: 2vw;
-  padding-left: 13%;
-  padding-right: 13%;
+  padding-left: 15%;
+  padding-right: 15%;
 }
 
 .wrapper .catalog1 .arrows {
@@ -1180,6 +1185,7 @@ a:-webkit-any-link{
   display: flex;
   background-color: white;
   width: 100%;
+  max-height: 40vw;
   box-shadow: 0px 0px 11px 3px rgba(101, 101, 101, 0.2);
 }
 
@@ -2027,7 +2033,7 @@ a:-webkit-any-link{
     height: 67vw;
     column-width:35vw;
     column-gap: 0;
-    column-fill: auto;  
+    column-fill: auto;
     font-size: 3vw;
     div {
       width: 35vw;
@@ -2036,6 +2042,3 @@ a:-webkit-any-link{
     }
 }
 }
-
-
-

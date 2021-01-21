@@ -1,8 +1,19 @@
+.nav-path {
+  padding-top: 3vw;
+  margin-left: 15%;
+  font-size: 1.2vw;
+  color: #C6C6C6;
+}
+.nav-path a {
+  text-decoration: underline;
+  color: #C6C6C6;
+}
+
 .main-item {
   padding-left: 15%;
   padding-right: 15%;
   display: flex;
-  padding-top: 3vw;
+  padding-top: 1vw;
 }
 .main-item .main-item__img {
   width: 50%;

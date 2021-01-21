@@ -8,6 +8,9 @@
 {% endblock %}
 
 {% block content %}
+  <div class="nav-path">
+    <a href="{% url 'shop:home' %}">Главная</a>/<a href="{% url 'shop:product_list' %}">Категории</a>/<a href="{% url 'shop:product_list' %}?search=&category={{ product.category.slug }}&pricefrom=0&priceto=99999">{{ product.category.name }}</a>/{{ product.name }}
+  </div>
     <div class="main-item" >
         <div class="main-item__img">
             <div id="sync1" class="owl-carousel owl-theme">
@@ -28,7 +31,7 @@
                 {% endfor %}
 
             </div>
-            
+
         </div>
         <div class="main-item__description">
             <div class="main-item__description-title">
@@ -44,11 +47,11 @@
 
             </div>
             <div class="main-item__description-price">
-                
+
                 <div class="main-item__description-price__price"style="display: flex;margin-right: 2vw;">
                     <div id="calculation" >{{ product.price|intcomma }}</div><div class="" style="margin-left: 0.5vw;"> ₽</div>
                 </div>
-                
+
                 <div class="main-item__description-price__conter">
                     <div class="minus"id="buttonCountMinus"style="cursor: pointer;">-</div>
                     <div class="count" id="buttonCountNumber">1</div>
@@ -58,7 +61,7 @@
                     <input type="hidden" value="{{ product.pk }}" name="product_id">
                     </form>
                 </div>
-                
+
             </div>
             <div class="main-item__description-btn" onclick="document.getElementById('addForm').submit();">
                 <div class="btn__wrapper">
@@ -73,7 +76,7 @@
                     <div class="tabl-item active"><div  class="ti">Высота </div><div class="inf">{{ product.height }}</div></div>
                     <div class="tabl-item"><div class="ti">Покрытие </div><div class= "inf">{{ product.coverage }}</div></div>
                      <div class="tabl-item active"><div class="ti">Материал</div><div class="inf">{{ product.matherial }}</div></div>
-                    
+
                 </div>
                 <div class="main-item__description-descripton__tags">
                     <div class="tag">Ваза тег</div><div class="tag">Вазатег поюольше</div><div class="tag">Ваза</div><div class="tag">Ваза</div><div class="tag">Ваза</div><div class="tag">Ваза</div><div class="tag">Ваза</div><div class="tag">Ваза</div><div class="tag">Ваза</div><div class="tag">Ваза</div><div class="tag">Ваза</div><div class="tag">Ваза</div><div class="tag">Ваза</div><div class="tag">Ваза</div><div class="tag">Ваза</div><div class="tag">Ваза</div><div class="tag">Ваза</div><div class="tag">Ваза</div><div class="tag">Ваза</div><div class="tag">Ваза</div><div class="tag">Ваза</div><div class="tag">Ваза</div><div class="tag">Ваза</div><div class="tag">Ваза</div><div class="tag">Ваза</div>
@@ -83,7 +86,7 @@
     </div>
     <div class="catalog1">
                 <div class="catalog__title">Похожие товары</div>
-                
+
                 <div class="catalog__wrapper">
                    {% for i in products1 %}
                     {% if i.new == True and i.hit == False %}
@@ -169,12 +172,12 @@
                     {% endif %}
 
                     {% endfor %}
-                    
+
                 </div>
             </div>
             <div class="catalog1">
                 <div class="catalog__title">Возможно вас также заинтересует</div>
-                
+
                 <div class="catalog__wrapper">
                    {% for i in products2 %}
                     {% if i.new == True and i.hit == False %}
@@ -260,7 +263,7 @@
                     {% endif %}
 
                     {% endfor %}
-                    
+
                 </div>
             </div>
 <script src="{% static 'lightbox2-dev/src/js/lightbox.js' %}"></script>

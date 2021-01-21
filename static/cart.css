@@ -254,6 +254,10 @@ table tbody tr td select option {
     margin-left: 5%;
     margin-right: 5%;
   }
+
+  .tabl {
+    display: block;
+  }
 }
 
 /*# sourceMappingURL=cart.css.map */

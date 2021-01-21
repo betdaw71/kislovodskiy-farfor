@@ -108,8 +108,9 @@ a:-webkit-any-link {
 
 .backcall-form {
   display: none;
+  z-index: 1;
   position: absolute;
-  margin-top: 20vw;
+  top: 6vw;
 }
 .backcall-form .backcall-form__wrapper {
   text-align: center;
@@ -393,6 +394,7 @@ a:-webkit-any-link {
   display: flex;
   justify-content: space-between;
   position: relative;
+  max-height: 23vw;
 }
 
 .wrapper .category .category__wrapper .category__wrapper-full {
@@ -404,6 +406,7 @@ a:-webkit-any-link {
   overflow: hidden;
   position: relative;
   height: 100%;
+  max-height: 20vw;
   background-color: white;
   box-shadow: 0px 0px 11px 3px rgba(101, 101, 101, 0.2);
   padding: 1vw;
@@ -558,6 +561,7 @@ a:-webkit-any-link {
   height: 100%;
   display: flex;
   justify-content: space-between;
+  max-height: 20vw;
 }
 
 .wrapper .category .category__wrapper .category__wrapper-gor .category-item-gor {
@@ -569,6 +573,7 @@ a:-webkit-any-link {
   border-radius: 0.8vw;
   width: 42%;
   height: 100%;
+  max-height: 20vw;
 }
 
 .wrapper .category .category__wrapper .category__wrapper-gor .category-item-gor:before {
@@ -918,8 +923,8 @@ a:-webkit-any-link {
 
 .wrapper .catalog1 {
   margin-top: 2vw;
-  padding-left: 13%;
-  padding-right: 13%;
+  padding-left: 15%;
+  padding-right: 15%;
 }
 
 .wrapper .catalog1 .arrows {
@@ -1201,6 +1206,7 @@ a:-webkit-any-link {
   display: flex;
   background-color: white;
   width: 100%;
+  max-height: 40vw;
   box-shadow: 0px 0px 11px 3px rgba(101, 101, 101, 0.2);
 }
 

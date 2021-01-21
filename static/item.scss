@@ -1,13 +1,18 @@
-
-
-
-
-
+.nav-path{
+  padding-top:3vw;
+  margin-left: 15%;
+  font-size: 1.2vw;
+  color:#C6C6C6;
+  a{
+    text-decoration:underline;
+    color:#C6C6C6;
+  }
+}
 .main-item{
     padding-left: 15%;
     padding-right: 15%;
     display: flex;
-    padding-top: 3vw;
+    padding-top: 1vw;
     .main-item__img{
         width:50%;
         margin-right: 3%;
@@ -132,7 +137,7 @@
             margin-bottom: 4vw;
             justify-content: space-between;
             .main-item__description-dop__item{
-                
+
                 span{
                     font-family: "Raleway";
                     font-weight: bold;
@@ -178,7 +183,7 @@
 //    width: 100%;
   .item {
 //    background: #C9C9C9;
-      
+
     padding: 10px 0px;
     margin: 5px;
     color: #FFF;
@@ -206,9 +211,9 @@
       transition: all .3s ease;
       &.disabled:hover {
 //       background-color: #D6D6D6;
-      }   
+      }
     }
-    
+
   }
 }
 
@@ -348,14 +353,3 @@
     // }
 
 }
-
-
-
-
-
-
-
-
-
-
-

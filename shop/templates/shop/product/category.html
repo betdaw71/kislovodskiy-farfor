@@ -4,12 +4,14 @@
 
 {% block static_block %}
 <link rel="stylesheet" href="{% static 'category.css'%}">
-        
+
 {% endblock %}
 
 {% block content %}
 
-
+   <div class="nav-path">
+     <a href="{% url 'shop:home' %}">Главная</a>/Категории
+   </div>
     <div class="main_category">
         <div class="main_category-nav">
            <form action="" method="get" id='formacs'>
@@ -54,7 +56,7 @@
             </form>
         </div>
         <div class="main_category-body">
-            <div class="catalog1">                
+            <div class="catalog1">
                 <div class="catalog__wrapper">
                    {% for i in products %}
                     {% if i.new == True and i.hit == False %}
@@ -140,7 +142,7 @@
                     {% endif %}
 
                     {% endfor %}
-                    
+
                 </div>
             </div>
         </div>
