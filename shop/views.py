@@ -20,7 +20,7 @@ class ProductListView(ListView):
 def index(request):
     categories = Category.objects.all()
     cart = Cart(request)
-    products = Product.objects.filter(available=True)
+    products = Product.objects.filter(available=True)[:4]
     context = {
         'categories': categories,
         'products': products,
@@ -56,16 +56,23 @@ def product_list(request, category_slug=None):
     context = {
         'category': category,
         'categories': categories,
-        'products': products
+        'products': products,
+        'categories': categories,
     }
     return render(request, 'shop/product/category.html', context)
 
 
 def product_detail(request, id, slug):
     product = get_object_or_404(Product, id=id, slug=slug, available=True)
+    products1 = Product.objects.filter(available=True)[:4]
+    products2= Product.objects.filter(available=True)[4:8]
+    categories = Category.objects.all()
     # cart_product_form = CartAddProductForm()
     context = {
-        'product': product
+        'product': product,
+        'categories': categories,
+        'products1':products1,
+        'products2':products2
         # 'cart_product_form': cart_product_form
     }
     return render(request, 'shop/product/detail.html', context)
