@@ -1,11 +1,73 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load humanize %}
 
 {% block static_block %}
     <link rel="stylesheet" href="{% static 'cart.css' %}">
 {% endblock %}
 
 {% block content %}
+<div class="container">
+    <div class="tabl">
+        <div class="tabl_first">
+            <div class="tabl_first-title">
+                <div class="tabl_first-title-item f">Товар</div>
+                <div class="tabl_first-title-item s">Цена, руб.</div>
+                <div class="tabl_first-title-item t ">Кол-во</div>
+                <div class="tabl_first-title-item fo">Сумма, руб.</div>
+            </div>
+            <div class="tabl_first-body">
+                {% for item in cart %}
+                    {% with product=item.product  %}
+
+                        <div class="tabl_first-body-item">
+                            <div class="item-one"> 
+                                <div class="item-img"><img src="{{ product.images.first.image.url }}" alt=""></div>
+                                <div class="item-title">{{ product.name }}</div>
+                             </div>
+                            <div class="item-price">{{ item.price|intcomma }} </div>
+                            <div class="item-col"><form action="{% url "cart:cart_add"  %}" method="get">
+                                <span style="display:inline-block">    
+                                    <select name="quantity" class="form-control" >
+                                        <option selected value="1">1</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                        <option value="6">6</option>
+                                        <option value="7">7</option>
+                                        <option value="8">8</option>
+                                        <option value="9">9</option>
+                                        <option value="10">10</option>
+                                        
+
+                                    </select>
+                                    <input type="hidden" name="product_id" value="{{ product.id }}">
+                                    <input type="submit" value="Изменить" class="change" style="margin-top:10%;f">
+                                </span>
+                            </form></div>
+                            <div class="item-priceall">{{ item.total_price|intcomma }}</div>                         
+                        </div>
+
+                    {% endwith %}
+                {% endfor %}
+            </div>
+            <div class="tabl_first-btns">
+                <div class="btn-continue"><div class="wrapper"></div></div>
+                <div class="btn-cleen"><div class="wrapper"></div></div>
+            </div>
+        </div>
+        <div class="tabl_second">  
+             <div class="tabl_second-title">
+                 Расчет
+             </div>
+             <div class="tabl_second-sum"></div>
+             <div class="tabl_second-all"></div>
+             <div class="tabl_second-btn"><div class="wrapper"></div></div>
+        </div>
+    </div>
+</div>
     <div class="container">
         <div class="row" style="padding-top: 6%">
         <h2>
@@ -13,8 +75,8 @@
                 {% with totail_items=cart|length %}
                     {% if cart|length > 0 %}
                         Текущий список покупок:
-                        <a href="{% url "cart:cart_detail" %}" style="color: #ffffff">
-                            {{ totail_items }} item {{ totail_items|pluralize }}, {{ cart.get_total_price }}
+                        <a href="{% url 'cart:cart_detail' %}" style="color: black">
+                            <!-- {{ totail_items }} товара, {{ cart.get_total_price }}  -->
                         </a>
                         {% else %}
                         Your cart is empty.
@@ -29,42 +91,55 @@
                 <th scope="col">Товар</th>
                 <th scope="col">Кол-во</th>
                 <th scope="col">Удалить</th>
-                <th scope="col">Цена одного товара</th>
+                <th scope="col">Цена за шт</th>
                 <th scope="col">Цена</th>
               </tr>
             </thead>
             <tbody>
                 {% for item in cart %}
                     {% with product=item.product  %}
-                        <tr>
-                            <th scope="row">
-                                <a href="{{ product.get__absolute_url }}">
-                                    <img src="{{ product.images.first.image.url }}" alt="..." style="height: 130px; width: auto">
-                            </a>
+                        <tr >
+                            <th scope="row" >
+                                <!-- <a href="{{ product.get__absolute_url }}"> -->
+                                    <img src="{{ product.images.first.image.url }}" alt="..." style="">
+                            <!-- </a> -->
                             </th>
                             <td>{{ product.name }}</td>
                             <td>
                             <form action="{% url "cart:cart_add"  %}" method="get">
-                                {% csrf_token %}
                                 <span style="display:inline-block">    
-                                    {{ item.update_quantity_form.quantity }}
-                                    {{ item.update_quantity_form.update }}
-                                    <input type="submit" value="Изменить" class="btn btn-outline-info"style="margin-top:10%;">
+                                    <select name="quantity" class="form-control" >
+                                        <option selected value="1">1</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                        <option value="6">6</option>
+                                        <option value="7">7</option>
+                                        <option value="8">8</option>
+                                        <option value="9">9</option>
+                                        <option value="10">10</option>
+                                        
+
+                                    </select>
+                                    <input type="hidden" name="product_id" value="{{ product.id }}">
+                                    <input type="submit" value="Изменить" class="change" style="margin-top:10%;f">
                                 </span>
                             </form>
                             </td>
-                            <td>
+                            <td class="del">
                                 <a href="{% url "cart:cart_remove" product.id %}">Удалить</a>
                             </td>
-                            <td> {{ item.price }}</td>
-                            <td> {{ item.total_price }}</td>
+                            <td> {{ item.price|intcomma }} ₽</td>
+                            <td> {{ item.total_price|intcomma }} ₽</td>
                         </tr>
                     {% endwith %}
                 {% endfor %}
                 <tr>
                     <td><b>Суммарная стоимость</b></td>
                     <td colspan="4"></td>
-                    <td colspan="num"><b> {{ cart.get_total_price }}</b></td>
+                    <td colspan="num"><b> {{ cart.get_total_price|intcomma }} ₽</b></td>
                 </tr>
             </tbody>
           </table>
@@ -77,4 +152,95 @@
         </p>
         </div>
     </div>
+    <div class="catalog1">
+                <div class="catalog__title">Возможно вас также заинтересует...</div>
+                
+                <div class="catalog__wrapper">
+                   {% for i in products %}
+                    {% if i.new == True and i.hit == False %}
+                    <div class="item new">
+                       <a href="{% url 'shop:product_detail' i.pk i.slug  %}">
+                        <div class="item__img"><img src="{{ i.images.first.image.url }}" alt=""></div>
+                        <div class="item__description">{{ i.name }}</div>
+                        <div class="item__price">{{ i.price|intcomma }} ₽</div>
+                        </a>
+                        <div class="item__btns">
+                            <div class="btn__wrapper" onclick="document.getElementById('addForm{{i.pk}}').submit()">В корзину</div>
+                            <div class="counter">
+                                <div class="minus" id="{{i.pk}}">-</div>
+                                <div class="numb{{i.pk}}"id="">1</div>
+                                <div class="plus" id="{{i.pk}}">+</div>
+                            </div>
+                            <form action="{% url 'cart:cart_add' %}" method="Get" id='addForm{{i.pk}}'>
+                                <input type="hidden" value="{{ i.pk }}" name="product_id">
+                                <input type="hidden" value="1" id="quantity{{i.pk}}" name="quantity">
+                            </form>
+                        </div>
+                    </div>
+                    {% elif i.hit == True and i.new == False %}
+                    <div class="item hit">
+                       <a href="{% url 'shop:product_detail' i.pk i.slug  %}">
+                        <div class="item__img"><img src="{{ i.images.first.image.url }}" alt=""></div>
+                        <div class="item__description">{{ i.name }}</div>
+                        <div class="item__price">{{ i.price|intcomma }} ₽</div>
+                        </a>
+                        <div class="item__btns">
+                            <div class="btn__wrapper" onclick="document.getElementById('addForm{{i.pk}}').submit()">В корзину</div>
+                            <div class="counter">
+                                <div class="minus" id="{{i.pk}}">-</div>
+                                <div class="numb{{i.pk}}"id="">1</div>
+                                <div class="plus" id="{{i.pk}}">+</div>
+                            </div>
+                            <form action="{% url 'cart:cart_add' %}" method="Get" id='addForm{{i.pk}}'>
+                                <input type="hidden" value="{{ i.pk }}" name="product_id">
+                                <input type="hidden" value="1" id="quantity{{i.pk}}" name="quantity">
+                            </form>
+                        </div>
+                    </div>
+                    {% elif i.hit == True and i.new == True %}
+                    <div class="item newhit">
+                       <a href="{% url 'shop:product_detail' i.pk i.slug  %}">
+                        <div class="item__img"><img src="{{ i.images.first.image.url }}" alt=""></div>
+                        <div class="item__description">{{ i.name }}</div>
+                        <div class="item__price">{{ i.price|intcomma }} ₽</div>
+                        </a>
+                        <div class="item__btns">
+                            <div class="btn__wrapper" onclick="document.getElementById('addForm{{i.pk}}').submit()">В корзину</div>
+                            <div class="counter">
+                                <div class="minus" id="{{i.pk}}">-</div>
+                                <div class="numb{{i.pk}}"id="">1</div>
+                                <div class="plus" id="{{i.pk}}">+</div>
+                            </div>
+                            <form action="{% url 'cart:cart_add' %}" method="Get" id='addForm{{i.pk}}'>
+                                <input type="hidden" value="{{ i.pk }}" name="product_id">
+                                <input type="hidden" value="1" id="quantity{{i.pk}}" name="quantity">
+                            </form>
+                        </div>
+                    </div>
+                    {% else %}
+                    <div class="item ">
+                       <a href="{% url 'shop:product_detail' i.pk i.slug  %}">
+                        <div class="item__img"><img src="{{ i.images.first.image.url }}" alt=""></div>
+                        <div class="item__description">{{ i.name }}</div>
+                        <div class="item__price">{{ i.price|intcomma }} ₽</div>
+                        </a>
+                        <div class="item__btns">
+                            <div class="btn__wrapper" onclick="document.getElementById('addForm{{i.pk}}').submit()">В корзину</div>
+                            <div class="counter">
+                                <div class="minus" id="{{i.pk}}">-</div>
+                                <div class="numb{{i.pk}}"id="">1</div>
+                                <div class="plus" id="{{i.pk}}">+</div>
+                            </div>
+                            <form action="{% url 'cart:cart_add' %}" method="Get" id='addForm{{i.pk}}'>
+                                <input type="hidden" value="{{ i.pk }}" name="product_id">
+                                <input type="hidden" value="1" id="quantity{{i.pk}}" name="quantity">
+                            </form>
+                        </div>
+                    </div>
+                    {% endif %}
+
+                    {% endfor %}
+
+                </div>
+            </div>
 {% endblock %}
