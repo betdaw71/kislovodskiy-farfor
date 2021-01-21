@@ -1,6 +1,6 @@
 $(window).on("scroll", function () {
     var scrolled = $(this).scrollTop();
-    if( scrolled > 107 ) {
+    if( scrolled > 137 ) {
         $('.main').addClass('scrolled');
     }   
     if( scrolled <= 107 ) {     
@@ -27,7 +27,12 @@ $('.header-category').on('click',function(){
         
     }
 });
-
+$('.info__backcall-wrapper').on('click',function(){
+    $('.backcall-form').fadeToggle(100);
+});
+$('.wrapper-close').on('click',function(){
+    $('.backcall-form').fadeOut(100);
+});
 
 $('.minus').on('click',function(){
     var id = this.id;
@@ -282,11 +287,10 @@ $(function() {
     1200: {
       items: 4
     },
-    992: {
-      items: 4
-    },
+    
     320: {
-      items: 2
+      items: 2,
+      margin: 3,
     }
 
 

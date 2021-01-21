@@ -114,11 +114,68 @@
     display: block;
     margin-left: 5%;
     margin-right: 5%;
+    padding-top: 5vw;
   }
-
-  .wrapper .catalog1 {
-    padding-left: 5%;
-    padding-right: 5%;
+  .main_category .main_category-nav {
+    background-color: none;
+    max-width: 100%;
+    min-width: 100%;
+  }
+  .main_category .main_category-nav .nav-category .nav-category__title {
+    font-size: 4vw;
+    margin-bottom: 2vw;
+    margin-top: 3vw;
+  }
+  .main_category .main_category-nav .nav-category .nav-category__body {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .main_category .main_category-nav .nav-category .nav-category__body .nav-category__body-item {
+    width: 33%;
+  }
+  .main_category .main_category-nav .nav-category .nav-category__body .nav-category__body-item .wrap .titlle {
+    font-size: 2vw;
+  }
+  .main_category .main_category-nav .nav-category .nav-category__body .nav-category__body-item .wrap input:checked {
+    color: blue;
+  }
+  .main_category .main_category-nav .nav-category .nav-category__body .nav-category__body-item .count {
+    display: none;
+  }
+  .main_category .main_category-nav .nav-price .nav-price__title {
+    font-size: 4vw;
+    margin-bottom: 2vw;
+    margin-top: 3vw;
+  }
+  .main_category .main_category-nav .nav-price .nav-price__body {
+    margin-bottom: 4vw;
+  }
+  .main_category .main_category-nav .nav-price .nav-price__body .nav-price__body-input input {
+    width: 42vw;
+    font-size: 4vw;
+    padding: 2vw;
+    border-radius: 2vw;
+  }
+  .main_category .main_category-nav .nav-submit .btn-wrapper {
+    border-radius: 3vw;
+    padding-top: 2vw;
+    padding-bottom: 2vw;
+  }
+  .main_category .main_category-nav .nav-search .nav-search__title {
+    font-size: 4vw;
+    margin-bottom: 2vw;
+    margin-top: 2vw;
+  }
+  .main_category .main_category-nav .nav-search .nav-search__input input {
+    width: 99%;
+    font-size: 4vw;
+    padding: 2vw;
+    border-radius: 2vw;
+  }
+  .main_category .main_category-nav .nav-search .nav-search__input img {
+    width: 5vw;
+    margin-left: -8vw;
+    margin-bottom: -1vw;
   }
 
   .wrapper .catalog1 .catalog__title {

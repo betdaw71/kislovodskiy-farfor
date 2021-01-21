@@ -1,7 +1,71 @@
-
 .container {
   margin-left: 15%;
   margin-right: 15%;
+}
+
+.tabl {
+  margin-top: 4vw;
+  display: flex;
+}
+.tabl .tabl_first {
+  padding: 1vw;
+  padding-left: 2vw;
+  padding-right: 2vw;
+  width: 60%;
+  background-color: white;
+  box-shadow: 0 10px 15px 0 rgba(0, 0, 0, 0.1);
+  border-radius: 0.5vw;
+}
+.tabl .tabl_first .tabl_first-title {
+  display: flex;
+  font-weight: bold;
+  font-size: 1vw;
+  margin-bottom: 1vw;
+}
+.tabl .tabl_first .tabl_first-title .f {
+  width: 40%;
+}
+.tabl .tabl_first .tabl_first-title .s {
+  width: 20%;
+}
+.tabl .tabl_first .tabl_first-title .t {
+  width: 20%;
+}
+.tabl .tabl_first .tabl_first-title .fo {
+  width: 20%;
+}
+.tabl .tabl_first .tabl_first-body .tabl_first-body-item {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 1vw;
+  padding-top: 1vw;
+  padding-bottom: 1vw;
+  display: flex;
+  align-items: center;
+}
+.tabl .tabl_first .tabl_first-body .tabl_first-body-item .item-col {
+  width: 20%;
+}
+.tabl .tabl_first .tabl_first-body .tabl_first-body-item .item-price {
+  width: 20%;
+}
+.tabl .tabl_first .tabl_first-body .tabl_first-body-item .item-one {
+  width: 40%;
+  display: flex;
+  align-items: center;
+}
+.tabl .tabl_first .tabl_first-body .tabl_first-body-item .item-one .item-title {
+  font-weight: bold;
+  font-size: 1vw;
+}
+.tabl .tabl_first .tabl_first-body .tabl_first-body-item .item-one .item-img {
+  width: 40%;
+}
+.tabl .tabl_first .tabl_first-body .tabl_first-body-item .item-one .item-img img {
+  width: 80%;
+}
+
+h2 {
+  font-size: 2vw;
 }
 
 table {
@@ -9,20 +73,37 @@ table {
 }
 table thead {
   width: 100%;
+  margin-bottom: 1vw;
 }
 table thead th {
   text-align: left;
   font-size: 1.2vw;
-  margin-right: 1vw;
+  margin-bottom: 1vw;
+}
+table tbody tr {
+  margin-bottom: 1vw;
+  margin-top: 1vw;
 }
 table tbody tr th {
   text-align: left;
 }
 table tbody tr th img {
-  max-width: 15vw;
+  width: 10vw;
   height: auto;
 }
 table tbody tr td {
+  font-size: 1vw;
+}
+table tbody tr td .change {
+  font-size: 1vw;
+}
+table tbody tr td input {
+  font-size: 1vw;
+}
+table tbody tr td select {
+  font-size: 1vw;
+}
+table tbody tr td select option {
   font-size: 1vw;
 }
 
@@ -41,6 +122,17 @@ table tbody tr td {
   padding-top: 0.5vw;
   padding-bottom: 0.5vw;
   border-radius: 1.5vw;
+}
+
+.del a {
+  color: red;
+}
+
+@media only screen and (max-device-width: 480px) {
+  .container {
+    margin-left: 5%;
+    margin-right: 5%;
+  }
 }
 
 /*# sourceMappingURL=cart.css.map */

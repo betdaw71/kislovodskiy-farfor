@@ -30,8 +30,42 @@
   font-size: 1.3vw;
   margin-bottom: 0.7vw;
 }
+.main-item .main-item__description .main-item__description-description .main-item__description-descripton__desc .active {
+  background-color: rgba(0, 0, 0, 0.02);
+}
+.main-item .main-item__description .main-item__description-description .main-item__description-descripton__desc .tabl-item {
+  font-size: 1.1vw;
+  padding: 1vw;
+  display: flex;
+}
+.main-item .main-item__description .main-item__description-description .main-item__description-descripton__desc .tabl-item .ti {
+  width: 50%;
+  font-weight: bolder;
+}
+.main-item .main-item__description .main-item__description-description .main-item__description-descripton__tags {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 2vw;
+}
+.main-item .main-item__description .main-item__description-description .main-item__description-descripton__tags .tag {
+  border: 0.5px solid #86C1DF;
+  padding: 0.2vw;
+  padding-left: 0.7vw;
+  padding-right: 0.7vw;
+  border-radius: 1vw;
+  margin: 0.2vw;
+}
+.main-item .main-item__description .main-item__description-description .main-item__description-descripton__tags .tag:hover {
+  color: white;
+  background-color: #86C1DF;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.main-item .main-item__description .main-item__description-description .main-item__description-descripton__tags .inf {
+  font-family: "Lato";
+}
 .main-item .main-item__description .main-item__description-btn {
-  width: 49%;
+  width: 53%;
   margin-top: 1vw;
 }
 .main-item .main-item__description .main-item__description-btn .btn__wrapper {
@@ -44,6 +78,9 @@
   padding-top: 0.7vw;
   border-radius: 4vw;
   box-shadow: 0px 3px 9px 0px rgba(165, 156, 159, 0.58);
+}
+.main-item .main-item__description .main-item__description-btn .btn__wrapper:hover {
+  cursor: pointer;
 }
 .main-item .main-item__description .main-item__description-price {
   display: flex;
@@ -148,6 +185,103 @@
 }
 #sync1.owl-theme .owl-next {
   right: 10px;
+}
+
+@media only screen and (max-device-width: 480px) {
+  .main-item {
+    display: block;
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+  .main-item .main-item__img {
+    width: 100%;
+    margin-right: 0px;
+  }
+  .main-item .main-item__description {
+    width: 100%;
+  }
+  .main-item .main-item__description .main-item__description-title {
+    font-size: 5vw;
+    margin-top: 4vw;
+    margin-bottom: 3vw;
+    text-align: center;
+  }
+  .main-item .main-item__description .main-item__description-price {
+    width: 100%;
+    margin-bottom: 4vw;
+  }
+  .main-item .main-item__description .main-item__description-price .main-item__description-price__price {
+    font-size: 5vw;
+  }
+  .main-item .main-item__description .main-item__description-price .main-item__description-price__conter {
+    border: none;
+    font-size: 3vw;
+    padding-left: 2vw;
+    padding-right: 2vw;
+  }
+  .main-item .main-item__description .main-item__description-price .main-item__description-price__conter .count {
+    font-size: 6vw;
+    margin-left: 3vw;
+    margin-right: 3vw;
+  }
+  .main-item .main-item__description .main-item__description-price .main-item__description-price__conter .minus {
+    font-size: 6vw;
+  }
+  .main-item .main-item__description .main-item__description-price .main-item__description-price__conter .plus {
+    font-size: 6vw;
+    margin-top: 0.5vw;
+  }
+  .main-item .main-item__description .main-item__description-btn {
+    width: 100%;
+  }
+  .main-item .main-item__description .main-item__description-btn .btn__wrapper {
+    font-size: 4vw;
+    padding-top: 2vw;
+    padding-bottom: 2vw;
+  }
+  .main-item .main-item__description .main-item__description-dop {
+    margin-top: 2vw;
+  }
+  .main-item .main-item__description .main-item__description-dop .main-item__description-dop__item span {
+    font-size: 3.2vw;
+  }
+  .main-item .main-item__description .main-item__description-dop .main-item__description-dop__item div {
+    font-size: 3.2vw;
+    font-family: "Raleway";
+  }
+  .main-item .main-item__description .main-item__description-dop .main-item__description-dop__item a {
+    font-size: 3.2vw;
+    font-family: "Raleway";
+  }
+  .main-item .main-item__description .main-item__description-description {
+    margin-top: 7vw;
+    padding-top: 3vw;
+  }
+  .main-item .main-item__description .main-item__description-description .main-item__description-description__title {
+    font-size: 4vw;
+  }
+  .main-item .main-item__description .main-item__description-description .main-item__description-descripton__desc {
+    font-size: 3vw;
+  }
+
+  #sync1 {
+    height: 70vw;
+  }
+  #sync1 .item {
+    height: 100%;
+  }
+  #sync1 .item img {
+    height: 70vw;
+  }
+  #sync1 .owl-stage-outer {
+    height: 70vw;
+  }
+  #sync1 .owl-height {
+    height: 70vw;
+  }
+  #sync1 .owl-item {
+    height: 70vw;
+  }
 }
 
 /*# sourceMappingURL=item.css.map */
