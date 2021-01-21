@@ -22,16 +22,16 @@
                 <div class="nav-category__body">
                     <div class="nav-category__body-item">
                           <div class="wrap">
-                           <div class="check"><input type="radio" checked="checked"  name="category" value="all"> </div>
-                           <div class="titlle">Все </div>
+                           <div class="check"><input type="radio" checked="checked" id='vse' name="category" value="all"> </div>
+                           <label for="vse"></label><div class="titlle">Все </div>
                            </div>
                            <div class="count">99+</div>
                         </div>
                     {% for i in categories %}
                         <div class="nav-category__body-item">
                           <div class="wrap">
-                           <div class="check"><input type="radio" name="category" value="{{i.slug }}"> </div>
-                           <div class="titlle">{{ i.name }} </div>
+                           <div class="check"><input type="radio" name="category" value="{{i.slug }}" id='{{i.id}}'> </div>
+                           <label for='{{i.id}}'><div class="titlle" style="cursor: pointer;">{{ i.name }} </div></label>
                            </div>
                            <div class="count">{{ i.products.all|length }}</div>
                         </div>
@@ -41,13 +41,13 @@
             <div class="nav-price">
                 <div class="nav-price__title title">Цена</div>
                 <div class="nav-price__body">
-                    <div class="nav-price__body-input"><input name="pricefrom" type="text" value="0" placeholder="от" id='from'></div>
-                    <div class="nav-price__body-input"><input name="priceto" value="99999" type="text"
+                    <div class="nav-price__body-input"><input name="pricefrom" type="text" value="" placeholder="от" id='from'></div>
+                    <div class="nav-price__body-input"><input name="priceto" value="" type="text"
                     placeholder="до" id='to'></div>
                 </div>
             </div>
             <div class="nav-submit">
-                <div class="btn-wrapper" id='filter-submit'>
+                <div class="btn-wrapper" id='filter-submit' style="cursor: pointer;">
                     Применить
                 </div>
             </div>
@@ -149,42 +149,37 @@
 
     <script>
         var csrftoken = $("[name=csrfmiddlewaretoken]").val();
-$('#filter-submit').on('click',function(){
-    $('#formacs').submit();
-//    let category = $('input[name="categoryyy"]:checked').val();
-//    let serch = $('#search_in').val();
-//    let pricefrom = $('#pricefrom').val();
-//    let priceto = $('#priceto').val()
-//    $('#formacs').attr('action'," url 'category_filter '"+ serch +" "+ category +" "+ pricefrom +" "+ priceto +" %}");
-//    console.log('asdasdas');
-//    var categories = []
-//    $('input:checkbox:checked').each(function(){
-//	   categories.push($(this).attr('name'));
-//    });
-//    data={
-//        'category' : categories,
-//        'price_from' : $('#from').val(),
-//        'price_to' : $('#to').val(),
-//        'search': $('#search_in').val()
-//    }
-//    $.ajax({
-//    url: " url 'category_filter' %}",
-//    method : "get",
-//    dataType : "json",
-//        headers:{
-//        "X-CSRFToken": csrftoken
-//    },
-//    data : data,
-//    timeout: 1000,
-//    success: function (response) {
-//        // Do some success scripts
-//        if (response.operation_status == 'ok') {
-//            alert ('All done ok')
-//        } else {
-//            alert ('Ups. Found some error!')
-//        }
-//    }
-//});
-});
+        $('#search_in').keydown(function(e) {
+            if(e.keyCode === 13) {
+               if ($('#from').val() === '' && $('#to').val()===''){
+                $('#from').val('0');
+                $('#to').val('999999');
+                $('#formacs').submit();
+            }else if ($('#from').val() === '' && $('#to').val()!=''){
+                $('#from').val('0');
+                $('#formacs').submit();
+            }else if($('#from').val() != '' && $('#to').val()===''){
+                $('#to').val('999999');
+                $('#formacs').submit();
+            }else{
+                $('#formacs').submit();
+            }
+            }
+          });
+        $('#filter-submit').on('click',function(){
+            if ($('#from').val() === '' && $('#to').val()===''){
+                $('#from').val('0');
+                $('#to').val('999999');
+                $('#formacs').submit();
+            }else if ($('#from').val() === '' && $('#to').val()!=''){
+                $('#from').val('0');
+                $('#formacs').submit();
+            }else if($('#from').val() != '' && $('#to').val()===''){
+                $('#to').val('999999');
+                $('#formacs').submit();
+            }else{
+                $('#formacs').submit();
+            }
+        });
 </script>
 {% endblock %}
