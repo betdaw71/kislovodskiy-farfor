@@ -3,15 +3,17 @@
 {% load humanize %}
 {% block static_block %}
     <link rel="stylesheet" href="{% static 'item.css' %}">
+    <link rel="stylesheet" href="{% static 'lightbox2-dev/src/css/lightbox.css' %}">
+
 {% endblock %}
 
 {% block content %}
- <div class="main-item" >
+    <div class="main-item" >
         <div class="main-item__img">
             <div id="sync1" class="owl-carousel owl-theme">
                {% for i in product.images.all %}
                 <div class="item">
-                    <img src="{{ i.image.url }}" alt="">
+                    <a href="{{ i.image.url }}" data-lightbox="image-1" data-title="My caption 1"><img src="{{ i.image.url }}" alt=""></a>
                 </div>
                 {% endfor %}
 
@@ -48,10 +50,9 @@
                 </div>
                 
                 <div class="main-item__description-price__conter">
-                    
-                    <div class="plus"id='buttonCountPlus' style="cursor: pointer;">+</div>
-                    <div class="count" id="buttonCountNumber">1</div>
                     <div class="minus"id="buttonCountMinus"style="cursor: pointer;">-</div>
+                    <div class="count" id="buttonCountNumber">1</div>
+                    <div class="plus"id='buttonCountPlus' style="cursor: pointer;">+</div>
                     <form action="{% url 'cart:cart_add' %}" method="Get" id='addForm'>
                     <input type="hidden" value="1" id="quantity" name="quantity">
                     <input type="hidden" value="{{ product.pk }}" name="product_id">
@@ -66,13 +67,16 @@
             </div>
             <div class="main-item__description-description">
                 <div class="main-item__description-description__title">
-                    Описание
+                    Дополнительная информация
                 </div>
                 <div class="main-item__description-descripton__desc">
-                    <div class="height"><span>Высота: </span>{{ product.height }}</div>
-                    <div class="coverage"><span>Покрытие: </span>{{ product.coverage }}</div>
-                     <div class="matherial"><span>Материал: </span>{{ product.matherial }}</div>
-                    {{ product.description }}
+                    <div class="tabl-item active"><div  class="ti">Высота </div><div class="inf">{{ product.height }}</div></div>
+                    <div class="tabl-item"><div class="ti">Покрытие </div><div class= "inf">{{ product.coverage }}</div></div>
+                     <div class="tabl-item active"><div class="ti">Материал</div><div class="inf">{{ product.matherial }}</div></div>
+                    
+                </div>
+                <div class="main-item__description-descripton__tags">
+                    <div class="tag">Ваза тег</div><div class="tag">Вазатег поюольше</div><div class="tag">Ваза</div><div class="tag">Ваза</div><div class="tag">Ваза</div><div class="tag">Ваза</div><div class="tag">Ваза</div><div class="tag">Ваза</div><div class="tag">Ваза</div><div class="tag">Ваза</div><div class="tag">Ваза</div><div class="tag">Ваза</div><div class="tag">Ваза</div><div class="tag">Ваза</div><div class="tag">Ваза</div><div class="tag">Ваза</div><div class="tag">Ваза</div><div class="tag">Ваза</div><div class="tag">Ваза</div><div class="tag">Ваза</div><div class="tag">Ваза</div><div class="tag">Ваза</div><div class="tag">Ваза</div><div class="tag">Ваза</div><div class="tag">Ваза</div>
                 </div>
             </div>
         </div>
@@ -81,122 +85,185 @@
                 <div class="catalog__title">Похожие товары</div>
                 
                 <div class="catalog__wrapper">
-                   
-                    <div class="item">
-                        <div class="item__img"><img src="{% static 'img/catalog/example1.png'%}" alt=""></div>
-                        <div class="item__description">Тарель живопись ,Рафаэль Санти "Мадонна в кресле"</div>
-                        <div class="item__price">2 190 ₽</div>
+                   {% for i in products1 %}
+                    {% if i.new == True and i.hit == False %}
+                    <div class="item new">
+                       <a href="{% url 'shop:product_detail' i.pk i.slug  %}">
+                        <div class="item__img"><img src="{{ i.images.first.image.url }}" alt=""></div>
+                        <div class="item__description">{{ i.name }}</div>
+                        <div class="item__price">{{ i.price|intcomma }} ₽</div>
+                        </a>
                         <div class="item__btns">
-                            <div class="btn__wrapper">В корзину</div>
+                            <div class="btn__wrapper" onclick="document.getElementById('addForm{{i.pk}}').submit()">В корзину</div>
                             <div class="counter">
-                                <div class="minus">-</div>
-                                <div class="numb">1</div>
-                                <div class="plus">+</div>
+                                <div class="minus" id="{{i.pk}}">-</div>
+                                <div class="numb{{i.pk}}"id="">1</div>
+                                <div class="plus" id="{{i.pk}}">+</div>
                             </div>
+                            <form action="{% url 'cart:cart_add' %}" method="Get" id='addForm{{i.pk}}'>
+                                <input type="hidden" value="{{ i.pk }}" name="product_id">
+                                <input type="hidden" value="1" id="quantity{{i.pk}}" name="quantity">
+                            </form>
                         </div>
                     </div>
-                    <div class="item">
-                        <div class="item__img"><img src="{% static 'img/catalog/example1.png'%}" alt=""></div>
-                        <div class="item__description">Тарель живопись ,Рафаэль Санти "Мадонна в кресле"</div>
-                        <div class="item__price">2 190 ₽</div>
-                        <div class="item__btns">
-                            <div class="btn__wrapper">В корзину</div>
-                            <div class="counter">
-                                <div class="minus">-</div>
-                                <div class="numb">1</div>
-                                <div class="plus">+</div>
-                            </div>
-                        </div>
-                    </div>
+                    {% elif i.hit == True and i.new == False %}
                     <div class="item hit">
-                        <div class="item__img"><img src="{% static 'img/catalog/example2.png'%}" alt=""></div>
-                        <div class="item__description">Тарель живопись ,Рафаэль Санти "Мадонна в кресле"</div>
-                        <div class="item__price">2 190 ₽</div>
+                       <a href="{% url 'shop:product_detail' i.pk i.slug  %}">
+                        <div class="item__img"><img src="{{ i.images.first.image.url }}" alt=""></div>
+                        <div class="item__description">{{ i.name }}</div>
+                        <div class="item__price">{{ i.price|intcomma }} ₽</div>
+                        </a>
                         <div class="item__btns">
-                            <div class="btn__wrapper">В корзину</div>
+                            <div class="btn__wrapper" onclick="document.getElementById('addForm{{i.pk}}').submit()">В корзину</div>
                             <div class="counter">
-                                <div class="minus">-</div>
-                                <div class="numb">1</div>
-                                <div class="plus">+</div>
+                                <div class="minus" id="{{i.pk}}">-</div>
+                                <div class="numb{{i.pk}}"id="">1</div>
+                                <div class="plus" id="{{i.pk}}">+</div>
                             </div>
+                            <form action="{% url 'cart:cart_add' %}" method="Get" id='addForm{{i.pk}}'>
+                                <input type="hidden" value="{{ i.pk }}" name="product_id">
+                                <input type="hidden" value="1" id="quantity{{i.pk}}" name="quantity">
+                            </form>
                         </div>
                     </div>
-                    <div class="item">
-                        <div class="item__img"><img src="{% static 'img/catalog/example3.png'%}" alt=""></div>
-                        <div class="item__description">Тарель живопись ,Рафаэль Санти "Мадонна в кресле"</div>
-                        <div class="item__price">2 190 ₽</div>
+                    {% elif i.hit == True and i.new == True %}
+                    <div class="item newhit">
+                       <a href="{% url 'shop:product_detail' i.pk i.slug  %}">
+                        <div class="item__img"><img src="{{ i.images.first.image.url }}" alt=""></div>
+                        <div class="item__description">{{ i.name }}</div>
+                        <div class="item__price">{{ i.price|intcomma }} ₽</div>
+                        </a>
                         <div class="item__btns">
-                            <div class="btn__wrapper">В корзину</div>
+                            <div class="btn__wrapper" onclick="document.getElementById('addForm{{i.pk}}').submit()">В корзину</div>
                             <div class="counter">
-                                <div class="minus">-</div>
-                                <div class="numb">1</div>
-                                <div class="plus">+</div>
+                                <div class="minus" id="{{i.pk}}">-</div>
+                                <div class="numb{{i.pk}}"id="">1</div>
+                                <div class="plus" id="{{i.pk}}">+</div>
                             </div>
+                            <form action="{% url 'cart:cart_add' %}" method="Get" id='addForm{{i.pk}}'>
+                                <input type="hidden" value="{{ i.pk }}" name="product_id">
+                                <input type="hidden" value="1" id="quantity{{i.pk}}" name="quantity">
+                            </form>
                         </div>
                     </div>
+                    {% else %}
+                    <div class="item ">
+                       <a href="{% url 'shop:product_detail' i.pk i.slug  %}">
+                        <div class="item__img"><img src="{{ i.images.first.image.url }}" alt=""></div>
+                        <div class="item__description">{{ i.name }}</div>
+                        <div class="item__price">{{ i.price|intcomma }} ₽</div>
+                        </a>
+                        <div class="item__btns">
+                            <div class="btn__wrapper" onclick="document.getElementById('addForm{{i.pk}}').submit()">В корзину</div>
+                            <div class="counter">
+                                <div class="minus" id="{{i.pk}}">-</div>
+                                <div class="numb{{i.pk}}"id="">1</div>
+                                <div class="plus" id="{{i.pk}}">+</div>
+                            </div>
+                            <form action="{% url 'cart:cart_add' %}" method="Get" id='addForm{{i.pk}}'>
+                                <input type="hidden" value="{{ i.pk }}" name="product_id">
+                                <input type="hidden" value="1" id="quantity{{i.pk}}" name="quantity">
+                            </form>
+                        </div>
+                    </div>
+                    {% endif %}
+
+                    {% endfor %}
+                    
                 </div>
             </div>
             <div class="catalog1">
                 <div class="catalog__title">Возможно вас также заинтересует</div>
                 
                 <div class="catalog__wrapper">
-                   
-                    <div class="item">
-                        <div class="item__img"><img src="{% static 'img/catalog/example1.png'%}" alt=""></div>
-                        <div class="item__description">Тарель живопись ,Рафаэль Санти "Мадонна в кресле"</div>
-                        <div class="item__price">2 190 ₽</div>
+                   {% for i in products2 %}
+                    {% if i.new == True and i.hit == False %}
+                    <div class="item new">
+                       <a href="{% url 'shop:product_detail' i.pk i.slug  %}">
+                        <div class="item__img"><img src="{{ i.images.first.image.url }}" alt=""></div>
+                        <div class="item__description">{{ i.name }}</div>
+                        <div class="item__price">{{ i.price|intcomma }} ₽</div>
+                        </a>
                         <div class="item__btns">
-                            <div class="btn__wrapper">В корзину</div>
+                            <div class="btn__wrapper" onclick="document.getElementById('addForm{{i.pk}}').submit()">В корзину</div>
                             <div class="counter">
-                                <div class="minus">-</div>
-                                <div class="numb">1</div>
-                                <div class="plus">+</div>
+                                <div class="minus" id="{{i.pk}}">-</div>
+                                <div class="numb{{i.pk}}"id="">1</div>
+                                <div class="plus" id="{{i.pk}}">+</div>
                             </div>
+                            <form action="{% url 'cart:cart_add' %}" method="Get" id='addForm{{i.pk}}'>
+                                <input type="hidden" value="{{ i.pk }}" name="product_id">
+                                <input type="hidden" value="1" id="quantity{{i.pk}}" name="quantity">
+                            </form>
                         </div>
                     </div>
-                    <div class="item">
-                        <div class="item__img"><img src="{% static 'img/catalog/example1.png'%}" alt=""></div>
-                        <div class="item__description">Тарель живопись ,Рафаэль Санти "Мадонна в кресле"</div>
-                        <div class="item__price">2 190 ₽</div>
-                        <div class="item__btns">
-                            <div class="btn__wrapper">В корзину</div>
-                            <div class="counter">
-                                <div class="minus">-</div>
-                                <div class="numb">1</div>
-                                <div class="plus">+</div>
-                            </div>
-                        </div>
-                    </div>
+                    {% elif i.hit == True and i.new == False %}
                     <div class="item hit">
-                        <div class="item__img"><img src="{% static 'img/catalog/example2.png'%}" alt=""></div>
-                        <div class="item__description">Тарель живопись ,Рафаэль Санти "Мадонна в кресле"</div>
-                        <div class="item__price">2 190 ₽</div>
+                       <a href="{% url 'shop:product_detail' i.pk i.slug  %}">
+                        <div class="item__img"><img src="{{ i.images.first.image.url }}" alt=""></div>
+                        <div class="item__description">{{ i.name }}</div>
+                        <div class="item__price">{{ i.price|intcomma }} ₽</div>
+                        </a>
                         <div class="item__btns">
-                            <div class="btn__wrapper">В корзину</div>
+                            <div class="btn__wrapper" onclick="document.getElementById('addForm{{i.pk}}').submit()">В корзину</div>
                             <div class="counter">
-                                <div class="minus">-</div>
-                                <div class="numb">1</div>
-                                <div class="plus">+</div>
+                                <div class="minus" id="{{i.pk}}">-</div>
+                                <div class="numb{{i.pk}}"id="">1</div>
+                                <div class="plus" id="{{i.pk}}">+</div>
                             </div>
+                            <form action="{% url 'cart:cart_add' %}" method="Get" id='addForm{{i.pk}}'>
+                                <input type="hidden" value="{{ i.pk }}" name="product_id">
+                                <input type="hidden" value="1" id="quantity{{i.pk}}" name="quantity">
+                            </form>
                         </div>
                     </div>
-                    <div class="item">
-                        <div class="item__img"><img src="{% static 'img/catalog/example3.png'%}" alt=""></div>
-                        <div class="item__description">Тарель живопись ,Рафаэль Санти "Мадонна в кресле"</div>
-                        <div class="item__price">2 190 ₽</div>
+                    {% elif i.hit == True and i.new == True %}
+                    <div class="item newhit">
+                       <a href="{% url 'shop:product_detail' i.pk i.slug  %}">
+                        <div class="item__img"><img src="{{ i.images.first.image.url }}" alt=""></div>
+                        <div class="item__description">{{ i.name }}</div>
+                        <div class="item__price">{{ i.price|intcomma }} ₽</div>
+                        </a>
                         <div class="item__btns">
-                            <div class="btn__wrapper">В корзину</div>
+                            <div class="btn__wrapper" onclick="document.getElementById('addForm{{i.pk}}').submit()">В корзину</div>
                             <div class="counter">
-                                <div class="minus">-</div>
-                                <div class="numb">1</div>
-                                <div class="plus">+</div>
+                                <div class="minus" id="{{i.pk}}">-</div>
+                                <div class="numb{{i.pk}}"id="">1</div>
+                                <div class="plus" id="{{i.pk}}">+</div>
                             </div>
+                            <form action="{% url 'cart:cart_add' %}" method="Get" id='addForm{{i.pk}}'>
+                                <input type="hidden" value="{{ i.pk }}" name="product_id">
+                                <input type="hidden" value="1" id="quantity{{i.pk}}" name="quantity">
+                            </form>
                         </div>
                     </div>
+                    {% else %}
+                    <div class="item ">
+                       <a href="{% url 'shop:product_detail' i.pk i.slug  %}">
+                        <div class="item__img"><img src="{{ i.images.first.image.url }}" alt=""></div>
+                        <div class="item__description">{{ i.name }}</div>
+                        <div class="item__price">{{ i.price|intcomma }} ₽</div>
+                        </a>
+                        <div class="item__btns">
+                            <div class="btn__wrapper" onclick="document.getElementById('addForm{{i.pk}}').submit()">В корзину</div>
+                            <div class="counter">
+                                <div class="minus" id="{{i.pk}}">-</div>
+                                <div class="numb{{i.pk}}"id="">1</div>
+                                <div class="plus" id="{{i.pk}}">+</div>
+                            </div>
+                            <form action="{% url 'cart:cart_add' %}" method="Get" id='addForm{{i.pk}}'>
+                                <input type="hidden" value="{{ i.pk }}" name="product_id">
+                                <input type="hidden" value="1" id="quantity{{i.pk}}" name="quantity">
+                            </form>
+                        </div>
+                    </div>
+                    {% endif %}
 
+                    {% endfor %}
+                    
                 </div>
             </div>
-
+<script src="{% static 'lightbox2-dev/src/js/lightbox.js' %}"></script>
 <script src="{% static 'detail.js' %}"></script>
 
 {% endblock %}
