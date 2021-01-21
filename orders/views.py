@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.core.mail import send_mail
+from shop.models import Product,Category
 
 from .models import OrderItem
 from .forms import OrderCreateForm
@@ -8,7 +9,9 @@ from cart.cart import Cart
 # Create your views here.
 
 def order_create(request):
+    categories = Category.objects.all()
     cart = Cart(request)
+    products = Product.objects.all()
     if request.method == 'POST':
         form = OrderCreateForm(request.POST)
         if form.is_valid():
@@ -28,4 +31,4 @@ def order_create(request):
         return render(request, 'orders/order/created.html', {'order':order})
     else:
         form = OrderCreateForm()
-    return render(request, 'orders/order/create.html', {'form':form})
+    return render(request, 'orders/order/create.html', {'form':form,'categories':categories,'products':products })

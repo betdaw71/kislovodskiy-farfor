@@ -4,23 +4,122 @@
 }
 
 .tabl {
-  margin-top: 4vw;
+  padding-top: 4vw;
   display: flex;
+}
+.tabl .tabl_second-btn .wrapper {
+  width: 70%;
+  margin-top: 1vw;
+  background-color: #86C1DF;
+  font-weight: bold;
+  color: white;
+  text-align: center;
+  font-size: 1.1vw;
+  padding-bottom: 0.7vw;
+  padding-top: 0.7vw;
+  border-radius: 4vw;
+  box-shadow: 0px 3px 9px 0px rgba(165, 156, 159, 0.58);
+}
+.tabl .tabl_second-btn .wrapper:hover {
+  cursor: pointer;
+}
+.tabl .tabl_second {
+  max-height: 14vw;
+  margin-left: 3%;
+  background-color: white;
+  border-radius: 0.5vw;
+  box-shadow: 0 10px 15px 0 rgba(0, 0, 0, 0.1);
+  width: 25%;
+  padding: 1vw;
+  padding-left: 2vw;
+  padding-right: 2vw;
+}
+.tabl .tabl_second .tabl_second-title {
+  font-weight: bold;
+  font-size: 1vw;
+  margin-top: 1vw;
+}
+.tabl .tabl_second .tabl_second-sum {
+  margin-top: 2vw;
+  display: flex;
+  font-size: 1.1vw;
+  padding-bottom: 1vw;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+.tabl .tabl_second .tabl_second-sum .tabl_second-sum-title {
+  font-weight: bold;
+  width: 50%;
+}
+.tabl .tabl_second .tabl_second-sum .tabl_second-sum-desc {
+  font-family: "Lato";
+}
+.tabl .tabl_second .tabl_second-all {
+  margin-top: 1vw;
+  display: flex;
+  font-size: 1.1vw;
+  font-weight: bold;
+}
+.tabl .tabl_second .tabl_second-all .tabl_second-sum-desc {
+  font-family: "LatoBold";
+}
+.tabl .tabl_second .tabl_second-all .tabl_second-sum-title {
+  font-weight: bold;
+  width: 50%;
 }
 .tabl .tabl_first {
   padding: 1vw;
   padding-left: 2vw;
   padding-right: 2vw;
-  width: 60%;
+  width: 65%;
   background-color: white;
   box-shadow: 0 10px 15px 0 rgba(0, 0, 0, 0.1);
   border-radius: 0.5vw;
+}
+.tabl .tabl_first .tabl_first-btns {
+  display: flex;
+  justify-content: space-between;
+}
+.tabl .tabl_first .tabl_first-btns .btn-cleen .wrapper {
+  margin-top: 1vw;
+  border: 0.1vw solid #86C1DF;
+  font-weight: bold;
+  color: white;
+  text-align: center;
+  font-size: 1.1vw;
+  padding-left: 1vw;
+  padding-right: 1vw;
+  padding-bottom: 0.7vw;
+  padding-top: 0.7vw;
+  color: #86C1DF;
+  border-radius: 4vw;
+  box-shadow: 0px 3px 9px 0px rgba(165, 156, 159, 0.58);
+}
+.tabl .tabl_first .tabl_first-btns .btn-cleen .wrapper:hover {
+  cursor: pointer;
+}
+.tabl .tabl_first .tabl_first-btns .btn-continue .wrapper {
+  margin-top: 1vw;
+  background-color: #86C1DF;
+  font-weight: bold;
+  color: white;
+  text-align: center;
+  font-size: 1.1vw;
+  padding-left: 1vw;
+  padding-right: 1vw;
+  padding-bottom: 0.7vw;
+  padding-top: 0.7vw;
+  border-radius: 4vw;
+  box-shadow: 0px 3px 9px 0px rgba(165, 156, 159, 0.58);
+}
+.tabl .tabl_first .tabl_first-btns .btn-continue .wrapper:hover {
+  cursor: pointer;
 }
 .tabl .tabl_first .tabl_first-title {
   display: flex;
   font-weight: bold;
   font-size: 1vw;
   margin-bottom: 1vw;
+  margin-top: 1vw;
 }
 .tabl .tabl_first .tabl_first-title .f {
   width: 40%;
@@ -35,6 +134,7 @@
   width: 20%;
 }
 .tabl .tabl_first .tabl_first-body .tabl_first-body-item {
+  margin-bottom: 1vw;
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 1vw;
   padding-top: 1vw;
@@ -42,11 +142,32 @@
   display: flex;
   align-items: center;
 }
+.tabl .tabl_first .tabl_first-body .tabl_first-body-item .item-del {
+  position: absolute;
+  margin-top: -4vw;
+  margin-left: 40vw;
+}
+.tabl .tabl_first .tabl_first-body .tabl_first-body-item .item-del img {
+  width: 1vw;
+}
+.tabl .tabl_first .tabl_first-body .tabl_first-body-item input {
+  font-size: 0.8vw;
+}
+.tabl .tabl_first .tabl_first-body .tabl_first-body-item select {
+  font-size: 0.8vw;
+}
+.tabl .tabl_first .tabl_first-body .tabl_first-body-item select option {
+  font-size: 1vw;
+}
 .tabl .tabl_first .tabl_first-body .tabl_first-body-item .item-col {
   width: 20%;
 }
 .tabl .tabl_first .tabl_first-body .tabl_first-body-item .item-price {
   width: 20%;
+  font-family: "Lato";
+}
+.tabl .tabl_first .tabl_first-body .tabl_first-body-item .item-priceall {
+  font-family: "LatoBold";
 }
 .tabl .tabl_first .tabl_first-body .tabl_first-body-item .item-one {
   width: 40%;
