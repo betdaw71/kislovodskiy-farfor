@@ -23,13 +23,13 @@
         </style>
     </head>
     <body>
-       
+
         <div class="main">
            <div class="menu">
             <div class="header">
-             
+
               <div class="wrap-head">
-                  
+
                    <div class="header__categories-wrap">
                        <div class="wrap-col">
                             {% for i in categories %}
@@ -68,7 +68,7 @@
                             </div>
                         </div>
                 </div>
-                    
+
                 </div>
                 <div class="header__menu">
                     <div class="header__menu-item header-category">
@@ -96,7 +96,7 @@
                         </div>
                     </div>
                     <a href="{% url 'cart:cart_detail' %}">
-                        <div class="info__cart">  
+                        <div class="info__cart">
                             <div class="info__cart-img"><img src="{% static 'img/main/cart-icon.png'%}" alt=""></div>
                             <div class="info__cart-img-num">{{cart.get_len}}</div>
                             <div class="info__cart-price">{{ cart.get_total_price }} ₽</div>
@@ -104,32 +104,11 @@
                         </div>
                     </a>
                 </div>
-<!--
-            <div class="menu-mob">
-                <div class="menu-mob__body">
-                    <div class="menu-mob__body-item">Категории</div>
-                    <div class="menu-mob__body-item">Категории</div>
-                    <div class="menu-mob__body-item">Категории</div>
-                    <div class="menu-mob__body-item">Категории</div>
-                    <div class="menu-mob__body-item">Категории</div>
-                </div>
-                <div class="menu-mob__footer">
-                    <div class="menu-mob__footer-phone">
-                        <div class="number">8 88 800 80 80</div>
-                        <div class="under">Бесплатный звонок</div>
-                    </div>
-                    <div class="menu-mob__footer-btn">
-                        <div class="btn__wrapper">
-                            Заказать звонок
-                        </div>
-                    </div>
-                </div>
-            </div>
--->
+
             </div>
         </div>
             <div class="main-img"><img src="{% static 'img/main/main-img.png'%}" alt=""></div>
-            
+
         </div>
         <div class="wrapper">
             <div class="benefits">
@@ -152,7 +131,7 @@
             </div>
             <div class="category">
                <div class="category__title">Популярные Категории</div>
-               
+
                 <div class="category__wrapper">
                     <div class="category__wrapper-full">
                         <div class="category-item-full"onclick="document.location.href = '{% url 'shop:product_list' %}?search=&category=vazy&pricefrom=0&priceto=99999';">
@@ -209,7 +188,7 @@
                                 <img src="{% static 'img/categories/cerkov.png'%}" alt="">
                             </div>
                         </div>
-                    </div>  
+                    </div>
                 </div>
             </div>
             <div class="catalog">
@@ -371,7 +350,7 @@
             </div>
             <div class="catalog1">
                 <div class="catalog__title">Идеи для подаркрв</div>
-                
+
                 <div class="catalog__wrapper">
                    {% for i in products %}
                     {% if i.new == True and i.hit == False %}
@@ -502,7 +481,7 @@
                         </div>
                         <div class="delivery__item-description">
 
-                            
+
                             Удобный, бесплатный и быстрый способ получения заказа из нашего магазина в Кисловодске. <br><br>
 <span>Адрес магазина</span>: г. Кисловодск, Курортный бульвар, 17 или 6 (по согласованию с менеджером), этаж 2.<br><br>
 <span>Время работы</span>: 10:00 – 19:00, без перерыва и выходных.
@@ -550,11 +529,11 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="footer__categories">
                     <div class="footer__categories-title">
                         Категории
-                    </div>    
+                    </div>
                     <div class="footer__categories-wrap">
                         <div class="wrap-row">
                             <div><a href="">Авторские Коллекции</a></div>
