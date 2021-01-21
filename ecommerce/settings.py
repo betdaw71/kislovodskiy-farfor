@@ -25,7 +25,7 @@ SECRET_KEY = '8doo5ctq2hb8dafvfjwk&h5n8_qy7&uxtv&m8)nf4@rl6of2&g'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -177,3 +177,7 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 CART_SESSION_ID = 'cart'
+# import dj-database-url
+
+# db_from_env = dj-database-url.config()
+# DATABASE['default'].update(db_from_env)
