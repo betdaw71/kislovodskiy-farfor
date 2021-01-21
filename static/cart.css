@@ -164,10 +164,12 @@
 }
 .tabl .tabl_first .tabl_first-body .tabl_first-body-item .item-price {
   width: 20%;
+  font-size: 1.2vw;
   font-family: "Lato";
 }
 .tabl .tabl_first .tabl_first-body .tabl_first-body-item .item-priceall {
   font-family: "LatoBold";
+  font-size: 1.2vw;
 }
 .tabl .tabl_first .tabl_first-body .tabl_first-body-item .item-one {
   width: 40%;
@@ -257,6 +259,11 @@ table tbody tr td select option {
 
   .tabl {
     display: block;
+  }
+  .tabl .tabl_first {
+    margin-bottom: 2vw;
+    width: 95%;
+    margin-right: 0px;
   }
 }
 
