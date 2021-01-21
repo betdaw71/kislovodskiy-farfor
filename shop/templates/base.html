@@ -41,33 +41,33 @@
                         </div>
                         <div class="menu-mob__wrap">
                             <div class="menu-mob__wrap-item">
-                                <a href="">Каталог</a>
+                                <a href="{% url 'shop:product_list' %}">Каталог</a>
                             </div>
                             <div class="menu-mob__wrap-item">
-                                <a href="">О нас</a>
+                                <a href="{% url 'shop:home' %}#about">О нас</a>
                             </div>
                             <div class="menu-mob__wrap-item">
-                                <a href="">Контакты</a>
+                                <a href="{% url 'shop:home' %}#contacts">Контакты</a>
                             </div>
                             <div class="menu-mob__wrap-item">
-                                <a href="">Опт</a>
+                                <a href="{% url 'shop:home' %}#about">Опт</a>
                             </div>
                             <div class="menu-mob__wrap-item">
-                                <a href="">Главная</a>
+                                <a href="{% url 'shop:home' %}">Главная</a>
                             </div>
                         </div>
                         <!-- </div> -->
                         <div class="header__categories-wrap__footer">
                             <div class="header__categories-wrap__footer-number">
-                                <div class="numb">8 88 800 80 80</div>
+                                <div class="numb">8 962 402 30 17</div>
                                 <div class="under">
                                     Бесплатный звонок
                                 </div>
                             </div>
                             <div class="header__categories-wrap__footer-number">
-                                <div class="btn__wrapper">
+                                <!-- <div class="btn__wrapper">
                                     Заказать звонок
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                 </div>
@@ -82,20 +82,36 @@
                            Категории
                        </div>
                         </div>
-                    <div class="header__menu-item"><a href="">Главная</a></div>
-                    <div class="header__menu-item"><a href="">О нас</a></div>
-                    <div class="header__menu-item"><a href="">Опт</a></div>
-                    <div class="header__menu-item"><a href="">Кантакты</a></div>
+                    <div class="header__menu-item"><a href="{% url 'shop:home' %}">Главная</a></div>
+                    <div class="header__menu-item"><a href="{% url 'shop:home' %}#about">О нас</a></div>
+                    <div class="header__menu-item"><a href="{% url 'shop:home' %}#about">Опт</a></div>
+                    <div class="header__menu-item"><a href="{% url 'shop:home' %}#contact">Кантакты</a></div>
                 </div>
-                <div class="header__logo"><img src="{% static 'img/main/main-logo.png'%}" alt=""></div>
+                <div class="header__logo"><a href="{% url 'shop:home' %}"><img src="{% static 'img/main/main-logo.png'%}" alt=""></a></div>
                 <div class="header__info">
                     <div class="info-number">
-                        <div class="number">8 888 880 88 88</div>
+                        <div class="number">8 962 402 30 17</div>
                         <div class="under">Бесплатный звонок</div>
                     </div>
                     <div class="info__backcall">
                         <div class="info__backcall-wrapper">
                             Заказать звонок
+                        </div>
+                    </div>
+                    <div class="backcall-form">
+                        <div class="backcall-form__wrapper">
+                            <div class="wrapper-close"><img src="{% static 'img/close.png' %}" alt=""></div>
+                            <div class="wrapper__logo"><img src="{% static 'img/main/main-logo.png' %}" alt=""></div>
+                            <div class="wrapper__title">
+                                Оставьте номер,<br>и мы Вам перезвоним
+                            </div>
+                            <div class="wrapper__form">
+                                <form action="">
+                                <div class="form__input"><input type="text"placeholder='+7 (___) ___-__-__'></div>
+                                <div class="form__btn"><input type="submit"value='Заказать звонок'></div>
+                                </form>
+                            </div>
+                            <div class="wrapper__undertitle">Гравфик работы: Пн-Вс 10:00-20:00</div>
                         </div>
                     </div>
                     <a href="{% url 'cart:cart_detail' %}">
@@ -107,53 +123,10 @@
                         </div>
                     </a>
                 </div>
-<!--
-            <div class="menu-mob">
-                <div class="menu-mob__body">
-                    <div class="menu-mob__body-item">Категории</div>
-                    <div class="menu-mob__body-item">Категории</div>
-                    <div class="menu-mob__body-item">Категории</div>
-                    <div class="menu-mob__body-item">Категории</div>
-                    <div class="menu-mob__body-item">Категории</div>
-                </div>
-                <div class="menu-mob__footer">
-                    <div class="menu-mob__footer-phone">
-                        <div class="number">8 88 800 80 80</div>
-                        <div class="under">Бесплатный звонок</div>
-                    </div>
-                    <div class="menu-mob__footer-btn">
-                        <div class="btn__wrapper">
-                            Заказать звонок
-                        </div>
-                    </div>
-                </div>
-            </div>
--->
             </div>
         </div>
     </div>
-<!--
-            <div class="menu-mob">
-                <div class="menu-mob__body">
-                    <div class="menu-mob__body-item">Категории</div>
-                    <div class="menu-mob__body-item">Категории</div>
-                    <div class="menu-mob__body-item">Категории</div>
-                    <div class="menu-mob__body-item">Категории</div>
-                    <div class="menu-mob__body-item">Категории</div>
-                </div>
-                <div class="menu-mob__footer">
-                    <div class="menu-mob__footer-phone">
-                        <div class="number">8 88 800 80 80</div>
-                        <div class="under">Бесплатный звонок</div>
-                    </div>
-                    <div class="menu-mob__footer-btn">
-                        <div class="btn__wrapper">
-                            Заказать звонок
-                        </div>
-                    </div>
-                </div>
-            </div>
--->
+
         <div class="wrapper">
            
            {% block content %}
@@ -169,11 +142,11 @@
                         </div>
                         <div class="footer__info-item">
                             <div class="item__img"><img src="{% static 'img/footer/mail.png'%}" alt=""></div>
-                            <div class="item__text">kislovod.farfor@info.com</div>
+                            <div class="item__text">kislovodskiy-farfor@yandex.ru</div>
                         </div>
                         <div class="footer__info-item">
                             <div class="item__img"><img src="{% static 'img/footer/phone.png'%}" alt=""></div>
-                            <div class="item__text"><span>8 88 800 80 80</span></div>
+                            <div class="item__text"><span>8 962 402 30 17</span></div>
                         </div>
                     </div>
                 </div>
@@ -183,46 +156,12 @@
                         Категории
                     </div>    
                     <div class="footer__categories-wrap">
-                        <div class="wrap-row">
-                            <div><a href="">Авторские Коллекции</a></div>
-                            <div><a href="">Вазы</a></div>
-                            <div><a href="">Конфетницы</a></div>
-                            <div><a href="">Шкатулки</a></div>
-                            <div><a href="">Фруктовницы</a></div>
-                            <div><a href="">Чайные пары</a></div>
-                            <div><a href="">Менажница</a></div>
-                            <div><a href="">Самовары</a></div>
+                        <div class="wrap-col1">
+                        {% for i in categories %}
+                                <div><a href="{% url 'shop:product_list' %}?search=&category={{ i.slug }}&pricefrom=0&priceto=99999">{{ i.name }}</a></div>
+                        {% endfor %}
                         </div>
-                        <div class="wrap-row">
-                            <div><a href="">Авторские Коллекции</a></div>
-                            <div><a href="">Вазы</a></div>
-                            <div><a href="">Конфетницы</a></div>
-                            <div><a href="">Шкатулки</a></div>
-                            <div><a href="">Фруктовницы</a></div>
-                            <div><a href="">Чайные пары</a></div>
-                            <div><a href="">Менажница</a></div>
-                            <div><a href="">Самовары</a></div>
-                        </div>
-                        <div class="wrap-row">
-                            <div><a href="">Авторские Коллекции</a></div>
-                            <div><a href="">Вазы</a></div>
-                            <div><a href="">Конфетницы</a></div>
-                            <div><a href="">Шкатулки</a></div>
-                            <div><a href="">Фруктовницы</a></div>
-                            <div><a href="">Чайные пары</a></div>
-                            <div><a href="">Менажница</a></div>
-                            <div><a href="">Самовары</a></div>
-                        </div>
-                        <div class="wrap-row">
-                            <div><a href="">Авторские Коллекции</a></div>
-                            <div><a href="">Вазы</a></div>
-                            <div><a href="">Конфетницы</a></div>
-                            <div><a href="">Шкатулки</a></div>
-                            <div><a href="">Фруктовницы</a></div>
-                            <div><a href="">Чайные пары</a></div>
-                            <div><a href="">Менажница</a></div>
-                            <div><a href="">Самовары</a></div>
-                        </div>
+                        
                     </div>
                 </div>
             </div>
