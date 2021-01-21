@@ -81,7 +81,12 @@ class Product(models.Model):
     
     def get_absolute_url(self):
         return reverse('shop:product_detail', args=[self.id, self.slug])
-
+    @classmethod
+    def last_four(cls):
+        return cls.objects.all()[:4]
+    @classmethod
+    def last_twelv(cls):
+        return cls.objects.all()[:12]
 
 class ProductImage(models.Model):
     image = models.ImageField(upload_to='media')
