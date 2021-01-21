@@ -21,11 +21,12 @@
                     {% with product=item.product  %}
 
                         <div class="tabl_first-body-item">
+                            <div class="item-del"><img src="{% static 'img/close.png' %}" alt=""></div>
                             <div class="item-one"> 
                                 <div class="item-img"><img src="{{ product.images.first.image.url }}" alt=""></div>
                                 <div class="item-title">{{ product.name }}</div>
                              </div>
-                            <div class="item-price">{{ item.price|intcomma }} </div>
+                            <div class="item-price">{{ item.price|intcomma }} ₽</div>
                             <div class="item-col"><form action="{% url "cart:cart_add"  %}" method="get">
                                 <span style="display:inline-block">    
                                     <select name="quantity" class="form-control" >
@@ -47,111 +48,34 @@
                                     <input type="submit" value="Изменить" class="change" style="margin-top:10%;f">
                                 </span>
                             </form></div>
-                            <div class="item-priceall">{{ item.total_price|intcomma }}</div>                         
+                            <div class="item-priceall">{{ item.total_price|intcomma }} ₽</div>                         
                         </div>
 
                     {% endwith %}
                 {% endfor %}
             </div>
             <div class="tabl_first-btns">
-                <div class="btn-continue"><div class="wrapper"></div></div>
-                <div class="btn-cleen"><div class="wrapper"></div></div>
+                <div class="btn-continue"><div class="wrapper">Продолжить покупки</div></div>
+                <div class="btn-cleen"><div class="wrapper">Отчистить</div></div>
             </div>
         </div>
         <div class="tabl_second">  
              <div class="tabl_second-title">
                  Расчет
              </div>
-             <div class="tabl_second-sum"></div>
-             <div class="tabl_second-all"></div>
-             <div class="tabl_second-btn"><div class="wrapper"></div></div>
+             <div class="tabl_second-sum">
+                 <div class="tabl_second-sum-title">Сумма:</div>
+                 <div class="tabl_second-sum-desc">{{ cart.get_total_price|intcomma }} ₽</div>
+             </div>
+             <div class="tabl_second-all">
+                 <div class="tabl_second-sum-title">Итог:</div>
+                 <div class="tabl_second-sum-desc">{{ cart.get_total_price|intcomma }} ₽</div>
+             </div>
+             <div class="tabl_second-btn"><div class="wrapper">Оформить заказ</div></div>
         </div>
     </div>
 </div>
-    <div class="container">
-        <div class="row" style="padding-top: 6%">
-        <h2>
-            <span class="badge pull-right">
-                {% with totail_items=cart|length %}
-                    {% if cart|length > 0 %}
-                        Текущий список покупок:
-                        <a href="{% url 'cart:cart_detail' %}" style="color: black">
-                            <!-- {{ totail_items }} товара, {{ cart.get_total_price }}  -->
-                        </a>
-                        {% else %}
-                        Your cart is empty.
-                    {% endif %}
-                {% endwith %}
-            </span>
-        </h2>
-        <table class="table table-dark table-hover">
-            <thead>
-              <tr>
-                <th scope="col">Изображение</th>
-                <th scope="col">Товар</th>
-                <th scope="col">Кол-во</th>
-                <th scope="col">Удалить</th>
-                <th scope="col">Цена за шт</th>
-                <th scope="col">Цена</th>
-              </tr>
-            </thead>
-            <tbody>
-                {% for item in cart %}
-                    {% with product=item.product  %}
-                        <tr >
-                            <th scope="row" >
-                                <!-- <a href="{{ product.get__absolute_url }}"> -->
-                                    <img src="{{ product.images.first.image.url }}" alt="..." style="">
-                            <!-- </a> -->
-                            </th>
-                            <td>{{ product.name }}</td>
-                            <td>
-                            <form action="{% url "cart:cart_add"  %}" method="get">
-                                <span style="display:inline-block">    
-                                    <select name="quantity" class="form-control" >
-                                        <option selected value="1">1</option>
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        <option value="4">4</option>
-                                        <option value="5">5</option>
-                                        <option value="6">6</option>
-                                        <option value="7">7</option>
-                                        <option value="8">8</option>
-                                        <option value="9">9</option>
-                                        <option value="10">10</option>
-                                        
-
-                                    </select>
-                                    <input type="hidden" name="product_id" value="{{ product.id }}">
-                                    <input type="submit" value="Изменить" class="change" style="margin-top:10%;f">
-                                </span>
-                            </form>
-                            </td>
-                            <td class="del">
-                                <a href="{% url "cart:cart_remove" product.id %}">Удалить</a>
-                            </td>
-                            <td> {{ item.price|intcomma }} ₽</td>
-                            <td> {{ item.total_price|intcomma }} ₽</td>
-                        </tr>
-                    {% endwith %}
-                {% endfor %}
-                <tr>
-                    <td><b>Суммарная стоимость</b></td>
-                    <td colspan="4"></td>
-                    <td colspan="num"><b> {{ cart.get_total_price|intcomma }} ₽</b></td>
-                </tr>
-            </tbody>
-          </table>
-                
-                </tbody>
-            </table>
-        <p class="text-right">
-            <a href="{% url "shop:product_list" %}" class="btn btn-default">Продолжить покупку</a>
-            <a href="{% url "orders:order_create" %}" class="btn btn-primary">Оформить заказ</a>
-        </p>
-        </div>
-    </div>
+  
     <div class="catalog1">
                 <div class="catalog__title">Возможно вас также заинтересует...</div>
                 
