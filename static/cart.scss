@@ -2,9 +2,13 @@
 	margin-left: 15%;
 	margin-right: 15%;
 }
-
+.cart-title{
+	font-size: 1.5vw;
+	padding-top: 3vw;
+	font-weight: bold;
+}
 .tabl{
-	padding-top: 4vw;
+	padding-top:1vw;
 	display: flex;
 	.tabl_second-btn{
 		.wrapper{
@@ -72,7 +76,13 @@
 	.tabl_first{padding:1vw;
 		padding-left:2vw;
 		padding-right: 2vw;
-
+		.tabl_first-body{
+			.tabl_first-body-item{
+				.item-titlle{
+					display: none;
+				}
+			}
+		}
 		width:65%;
 		background-color: white;
 		box-shadow: 0 10px 15px 0 rgba(0, 0, 0, 0.1);
@@ -168,6 +178,7 @@
 				}
 				.item-col{
 					width: 20%;
+					font-size: 1.1vw;
 				}
 				.item-price{
 					width: 20%;
@@ -185,6 +196,9 @@
 					.item-title{
 						font-weight: bold;
 						font-size: 1vw;
+					}
+					.dellit{
+						display: none;
 					}
 					.item-img{
 						width: 40%;
@@ -272,12 +286,141 @@ table{
 		margin-left: 5%;
 		margin-right: 5%;
 	}
+	.cart-title{
+		font-size: 4vw;
+		text-align: center;
+		padding-top: 5vw;
+		margin-bottom: 2vw;
+	}
 	.tabl{
 			display: block;
+			.tabl_second{
+				padding: 3vw;
+				width: 87%;
+				border: 1px solid rgba(0, 0, 0, 0.1);
+				border-radius: 2vw;
+				max-height: 50vw;
+				.tabl_second-title{
+					font-size: 5vw;
+					margin-bottom: 6vw;
+				}
+				.tabl_second-btn{
+					.wrapper{
+						padding-top: 1vw;
+						padding-bottom: 1vw;
+						font-size: 4vw;
+					}
+				}
+				.tabl_second-sum{
+					font-size: 4vw;
+				}
+				.tabl_second-all{
+					font-size: 4vw;
+					margin-bottom: 4vw;
+
+				}
+			}
 			.tabl_first{
+				.tabl_first-btns{
+					margin-top: 3vw;
+					margin-bottom: 3vw;
+					.btn-continue{
+						.wrapper{
+							padding:1.5vw;
+							padding-left: 3vw;
+							padding-right: 3vw;
+							font-size: 3.5vw;
+						}
+					}
+					.btn-cleen{
+						.wrapper{
+							padding:1.5vw;
+							padding-left: 3vw;
+							padding-right: 3vw;
+							font-size: 3.5vw;
+
+						}
+					}
+				}
+				background: none;
+				box-shadow: none;
 				margin-bottom: 2vw;
 				width: 95%;
 				margin-right: 0px;
+
+				.tabl_first-title{
+					display: none;
+				}
+				.tabl_first-body{
+					background: none;
+					.tabl_first-body-item{
+						padding: 4vw;
+						border-radius:2vw;
+						display: block;
+						background: white;
+						.item-col{
+							margin-top: 2vw;
+							margin-bottom: 2vw;
+							width: 100%;
+							display: flex;
+							align-items: center;
+							justify-content: space-between;
+							font-size: 3vw;
+							input{
+								font-size: 3vw;
+							}
+							select{
+								font-size: 3vw;
+								option{
+									font-size: 3vw;
+								}
+							}
+						}
+						.item-price{
+							width: 100%;
+							display: flex;
+							justify-content: space-between;
+						}
+						.item-priceall{
+							display: flex;
+							justify-content: space-between;
+						}
+						.item-titlle{
+							display: block;
+							font-size: 3vw;
+							font-weight: bolder;
+							font-family: 'Raleway'
+						}
+						.item-desc{
+							font-size: 3vw;
+
+						}
+
+						.item-one{
+							margin-bottom: 3vw;
+							width: 100%;
+							align-items: flex-start;
+							.item-img{
+								width: 30%;
+								img{
+									width: 90%;
+								}
+							}
+							.dellit{
+								display: block;
+								font-size: 3vw;
+								margin-top: 2vw;
+								font-weight: normal;
+								a{color:red;}
+
+							}
+							.item-title{
+								margin-top:2vw;
+								font-size: 5vw;
+							}
+						}
+					}
+				}
 			}
 		}
 }

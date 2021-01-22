@@ -274,6 +274,13 @@
   .main-item .main-item__description .main-item__description-description .main-item__description-descripton__desc {
     font-size: 3vw;
   }
+  .main-item .main-item__description .main-item__description-description .main-item__description-descripton__desc .tabl-item {
+    font-size: 3vw;
+  }
+  .main-item .main-item__description .main-item__description-description .main-item__description-descripton__tags .tag {
+    font-size: 3vw;
+    margin: 1vw;
+  }
 
   #sync1 {
     height: 70vw;

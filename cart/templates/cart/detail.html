@@ -8,6 +8,9 @@
 
 {% block content %}
 <div class="container">
+  <div class="cart-title">
+    Корзина
+  </div>
     <div class="tabl">
         <div class="tabl_first">
             <div class="tabl_first-title">
@@ -21,45 +24,67 @@
                     {% with product=item.product  %}
 
                         <div class="tabl_first-body-item">
-                            <div class="item-del"><img src="{% static 'img/close.png' %}" alt=""></div>
-                            <div class="item-one"> 
+                            <div class="item-del"><a href="{% url 'cart:cart_remove' product.id  %}"><img src="{% static 'img/close.png' %}" alt=""></a></div>
+                            <div class="item-one">
                                 <div class="item-img"><img src="{{ product.images.first.image.url }}" alt=""></div>
-                                <div class="item-title">{{ product.name }}</div>
+                                <div class="item-title">{{ product.name }}<div class="dellit">
+                                  <a href="{% url 'cart:cart_remove' product.id  %}">Удалить</a>
+                                </div></div>
                              </div>
-                            <div class="item-price">{{ item.price|intcomma }} ₽</div>
-                            <div class="item-col"><form action="{% url "cart:cart_add"  %}" method="get">
-                                <span style="display:inline-block">    
-                                    <select name="quantity" class="form-control" >
-                                        <option selected value="1">1</option>
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        <option value="4">4</option>
-                                        <option value="5">5</option>
-                                        <option value="6">6</option>
-                                        <option value="7">7</option>
-                                        <option value="8">8</option>
-                                        <option value="9">9</option>
-                                        <option value="10">10</option>
-                                        
+                            <div class="item-price">
+                              <div class="item-titlle">
+                                 Цена, руб.
+                              </div>
+                              <div class="item-desc">
+                                {{ item.price|intcomma }} ₽
+                              </div>
+                          </div>
+                            <div class="item-col">
+                              <div class="item-titlle">
+                                Количество
+                              </div>
+                              <div class="item-desc">
+                                <form action="{% url "cart:cart_add"  %}" method="get">
+                                  <span style="display:inline-block">
+                                      <select name="quantity" class="form-control" >
+                                          <option selected value="1">1</option>
+                                          <option value="1">1</option>
+                                          <option value="2">2</option>
+                                          <option value="3">3</option>
+                                          <option value="4">4</option>
+                                          <option value="5">5</option>
+                                          <option value="6">6</option>
+                                          <option value="7">7</option>
+                                          <option value="8">8</option>
+                                          <option value="9">9</option>
+                                          <option value="10">10</option>
+                                      </select>
+                                      <input type="hidden" name="product_id" value="{{ product.id }}">
+                                      <input type="submit" value="Изменить" class="change" style="margin-top:10%;f">
+                                  </span>
+                              </form>
+                              </div>
 
-                                    </select>
-                                    <input type="hidden" name="product_id" value="{{ product.id }}">
-                                    <input type="submit" value="Изменить" class="change" style="margin-top:10%;f">
-                                </span>
-                            </form></div>
-                            <div class="item-priceall">{{ item.total_price|intcomma }} ₽</div>                         
-                        </div>
+                          </div>
+                          <div class="item-priceall">
+                            <div class="item-titlle">
+                              Сумма, руб.
+                            </div>
+                            <div class="item-desc">
+                              {{ item.total_price|intcomma }} ₽
+                            </div>
+                          </div>
+                      </div>
 
                     {% endwith %}
                 {% endfor %}
             </div>
             <div class="tabl_first-btns">
-                <div class="btn-continue"><div class="wrapper">Продолжить покупки</div></div>
-                <div class="btn-cleen"><div class="wrapper">Отчистить</div></div>
+                <div class="btn-continue"><a href="{% url 'shop:product_list' %}"><div class="wrapper">Продолжить покупки</div></a></div>
+                <div class="btn-cleen"><a href="#"><div class="wrapper">Отчистить</div></a></div>
             </div>
         </div>
-        <div class="tabl_second">  
+        <div class="tabl_second">
              <div class="tabl_second-title">
                  Расчет
              </div>
@@ -71,14 +96,14 @@
                  <div class="tabl_second-sum-title">Итог:</div>
                  <div class="tabl_second-sum-desc">{{ cart.get_total_price|intcomma }} ₽</div>
              </div>
-             <div class="tabl_second-btn"><div class="wrapper">Оформить заказ</div></div>
+             <div class="tabl_second-btn"><a href="{% url 'orders:order_create' %}"><div class="wrapper">Оформить заказ</div></a></div>
         </div>
     </div>
 </div>
-  
+
     <div class="catalog1">
                 <div class="catalog__title">Возможно вас также заинтересует...</div>
-                
+
                 <div class="catalog__wrapper">
                    {% for i in products %}
                     {% if i.new == True and i.hit == False %}

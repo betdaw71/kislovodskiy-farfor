@@ -3,8 +3,14 @@
   margin-right: 15%;
 }
 
+.cart-title {
+  font-size: 1.5vw;
+  padding-top: 3vw;
+  font-weight: bold;
+}
+
 .tabl {
-  padding-top: 4vw;
+  padding-top: 1vw;
   display: flex;
 }
 .tabl .tabl_second-btn .wrapper {
@@ -74,6 +80,9 @@
   background-color: white;
   box-shadow: 0 10px 15px 0 rgba(0, 0, 0, 0.1);
   border-radius: 0.5vw;
+}
+.tabl .tabl_first .tabl_first-body .tabl_first-body-item .item-titlle {
+  display: none;
 }
 .tabl .tabl_first .tabl_first-btns {
   display: flex;
@@ -161,6 +170,7 @@
 }
 .tabl .tabl_first .tabl_first-body .tabl_first-body-item .item-col {
   width: 20%;
+  font-size: 1.1vw;
 }
 .tabl .tabl_first .tabl_first-body .tabl_first-body-item .item-price {
   width: 20%;
@@ -179,6 +189,9 @@
 .tabl .tabl_first .tabl_first-body .tabl_first-body-item .item-one .item-title {
   font-weight: bold;
   font-size: 1vw;
+}
+.tabl .tabl_first .tabl_first-body .tabl_first-body-item .item-one .dellit {
+  display: none;
 }
 .tabl .tabl_first .tabl_first-body .tabl_first-body-item .item-one .item-img {
   width: 40%;
@@ -257,13 +270,133 @@ table tbody tr td select option {
     margin-right: 5%;
   }
 
+  .cart-title {
+    font-size: 4vw;
+    text-align: center;
+    padding-top: 5vw;
+    margin-bottom: 2vw;
+  }
+
   .tabl {
     display: block;
   }
+  .tabl .tabl_second {
+    padding: 3vw;
+    width: 87%;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 2vw;
+    max-height: 50vw;
+  }
+  .tabl .tabl_second .tabl_second-title {
+    font-size: 5vw;
+    margin-bottom: 6vw;
+  }
+  .tabl .tabl_second .tabl_second-btn .wrapper {
+    padding-top: 1vw;
+    padding-bottom: 1vw;
+    font-size: 4vw;
+  }
+  .tabl .tabl_second .tabl_second-sum {
+    font-size: 4vw;
+  }
+  .tabl .tabl_second .tabl_second-all {
+    font-size: 4vw;
+    margin-bottom: 4vw;
+  }
   .tabl .tabl_first {
+    background: none;
+    box-shadow: none;
     margin-bottom: 2vw;
     width: 95%;
     margin-right: 0px;
+  }
+  .tabl .tabl_first .tabl_first-btns {
+    margin-top: 3vw;
+    margin-bottom: 3vw;
+  }
+  .tabl .tabl_first .tabl_first-btns .btn-continue .wrapper {
+    padding: 1.5vw;
+    padding-left: 3vw;
+    padding-right: 3vw;
+    font-size: 3.5vw;
+  }
+  .tabl .tabl_first .tabl_first-btns .btn-cleen .wrapper {
+    padding: 1.5vw;
+    padding-left: 3vw;
+    padding-right: 3vw;
+    font-size: 3.5vw;
+  }
+  .tabl .tabl_first .tabl_first-title {
+    display: none;
+  }
+  .tabl .tabl_first .tabl_first-body {
+    background: none;
+  }
+  .tabl .tabl_first .tabl_first-body .tabl_first-body-item {
+    padding: 4vw;
+    border-radius: 2vw;
+    display: block;
+    background: white;
+  }
+  .tabl .tabl_first .tabl_first-body .tabl_first-body-item .item-col {
+    margin-top: 2vw;
+    margin-bottom: 2vw;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 3vw;
+  }
+  .tabl .tabl_first .tabl_first-body .tabl_first-body-item .item-col input {
+    font-size: 3vw;
+  }
+  .tabl .tabl_first .tabl_first-body .tabl_first-body-item .item-col select {
+    font-size: 3vw;
+  }
+  .tabl .tabl_first .tabl_first-body .tabl_first-body-item .item-col select option {
+    font-size: 3vw;
+  }
+  .tabl .tabl_first .tabl_first-body .tabl_first-body-item .item-price {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+  .tabl .tabl_first .tabl_first-body .tabl_first-body-item .item-priceall {
+    display: flex;
+    justify-content: space-between;
+  }
+  .tabl .tabl_first .tabl_first-body .tabl_first-body-item .item-titlle {
+    display: block;
+    font-size: 3vw;
+    font-weight: bolder;
+    font-family: "Raleway";
+  }
+  .tabl .tabl_first .tabl_first-body .tabl_first-body-item .item-desc {
+    font-size: 3vw;
+  }
+  .tabl .tabl_first .tabl_first-body .tabl_first-body-item .item-one {
+    margin-bottom: 3vw;
+    width: 100%;
+    align-items: flex-start;
+  }
+  .tabl .tabl_first .tabl_first-body .tabl_first-body-item .item-one .item-img {
+    width: 30%;
+  }
+  .tabl .tabl_first .tabl_first-body .tabl_first-body-item .item-one .item-img img {
+    width: 90%;
+  }
+  .tabl .tabl_first .tabl_first-body .tabl_first-body-item .item-one .dellit {
+    display: block;
+    font-size: 3vw;
+    margin-top: 2vw;
+    font-weight: normal;
+  }
+  .tabl .tabl_first .tabl_first-body .tabl_first-body-item .item-one .dellit a {
+    color: red;
+  }
+  .tabl .tabl_first .tabl_first-body .tabl_first-body-item .item-one .item-title {
+    margin-top: 2vw;
+    font-size: 5vw;
   }
 }
 

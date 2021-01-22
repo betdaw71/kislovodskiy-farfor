@@ -1,36 +1,118 @@
 {% extends 'base.html' %}
 {% load static %}
+
+{% block static_block %}
+  <style>
+    .deliveryblock{
+      width:50%;
+      background:white;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      border-radius:1vw;
+      display:flex;
+      padding:2vw;
+      justify-content:spac-between;
+       box-shadow:         0px 3px 9px 0px rgba(165, 156, 159, 0.58);
+    }
+    .deliveryblock-form{
+      width:50%;
+    }
+    .deliveryblock-orders{
+      width:50%;
+    }
+    .list-group{}
+    .list-group-item{
+      display:flex;
+      margin-bottom:1vw;
+      margin-top:1vw;
+    }
+    .list-group-item-img{
+      width:40%;
+    }
+    .list-group-item-img img{
+      width:90%;
+    }
+    input{
+      text-align: left;
+      border:none;
+      background-color: #E8E8E8;
+      border-radius: 1vw;
+      width: 90%;
+      margin-bottom:1vw;
+      font-size: 1vw;
+      padding-top: 0.5vw;
+      padding-bottom: 0.5vw;
+      padding-left: 10%;
+      padding-right: 10%;
+    }
+    .subform{
+      background:#86C1DF;
+      color:white;
+      text-align:center;
+      padding-top:1vw;
+      padding-bottom:1vw;
+      font-size:1.2vw;
+
+    }
+  </style>
+{% endblock %}
+
 {% block title %}
     Your Shopping Cart| Checkout
 {% endblock %}
 
 {% block content %}
     <div class="container">
-        <div class="row" style="padding-top: 3vw;margin-bottom: 3vw; ;text-align: center;">
+        <div class="row" style="padding-left:15%;">
             <div class="col-md-8">
-                <h4 class="page-header">Форма заказа</h4>
-                <form action="." method="post">
-                    {% csrf_token %}
-                    {{ form.as_p }}<br>
-                    <input type="submit" class="btn btn-primary" value="Подтвердить заказ">
-                </form>
-            </div>
-            <div class="col-md-4">
-                <div class="page-header">
-                    Заказ:
+                <h4 class="page-header"style='padding-top:2vw;padding-bottom:1vw;font-size:2vw;'>Форма заказа</h4>
+                <div class="deliveryblock">
+                  <div class="deliveryblock-form">
+                    <form action="." method="post">
+                        {% csrf_token %}
+                        {% for field in form %}
+                        <div class="row">
+                            {{field.label_tag}}
+                            <div class="col-md-10">{{field}}</div>
+                            {% if field.errors%}
+                            <div class="error">{{field.errors}}</div>
+                            {% endif %}
+                        </div>
+                        {% endfor %}<br>
+                        <input type="submit" class="btn btn-primary subform" value="Подтвердить заказ">
+                    </form>
+                  </div>
+                  <div class="deliveryblock-orders">
+                    <div class="col-md-4">
+                        <div class="page-header">
+                            Заказ:
+                        </div>
+                        <div class="list-group">
+                            {% for item in cart %}
+                                <div class="list-group-item">
+                                  <div class="list-group-item-img">
+                                    <img src="{{item.product.images.first.image.url}}" alt="">
+                                  </div>
+                                  <div class="list-group-item-info">
+                                    <div class="list-gorup-item-info-title">
+                                      <div class="" style='margin-bottom:2vw;'>
+                                        {{ item.product.name }}
+                                      </div>
+                                      <span style='font-family: "Lato";'> {{ item.quantity }}x {{ item.total_price }} ₽</span>
+                                    </div>
+                                  </div>
+
+                                </div>
+                            {% endfor %}
+
+                        <div class="list-group-item active"style='margin-top:3vw;font-family: "LatoBold";'>Общая стоимость: {{ cart.get_total_price }} ₽</div>
+                        </div>
+
+                    </div>
+                  </div>
                 </div>
-                <ul class="list-group">
-                    {% for item in cart %}
-                        <li class="list-group-item">
-                        {{ item.quantity }}x {{ item.product.name }}
-                        <span> {{ item.total_price }}</span>
-                        </li>
-                    {% endfor %}
-
-                <li class="list-group-item active">Общая стоимость: {{ cart.get_total_price }}</li>
-                </ul>
 
             </div>
+
         </div>
     </div>
 {% endblock %}

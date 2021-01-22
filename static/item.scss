@@ -305,6 +305,7 @@
                     }
                 }
             }
+
             .main-item__description-description{
                 margin-top: 7vw;
                 padding-top: 3vw;
@@ -313,6 +314,13 @@
                 }
                 .main-item__description-descripton__desc{
                     font-size: 3vw;
+                    .tabl-item{
+                      font-size: 3vw;
+                    }
+                }
+                .main-item__description-descripton__tags{
+                  .tag{
+                  font-size: 3vw;margin: 1vw;}
                 }
             }
         }
